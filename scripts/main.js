@@ -90,8 +90,8 @@ const vm = new Vue({
     isMusicPlaying: true,
     isShuffled: false,
     isRepeated: true,
-    musicListOpen: false,
-    musicNowPlayingOpen: true,
+    musicListOpen: true,
+    musicNowPlayingOpen: false,
     //#endregion Music App Variables
   },
   methods: {

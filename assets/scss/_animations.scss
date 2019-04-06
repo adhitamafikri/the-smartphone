@@ -5,3 +5,7 @@
 @keyframes duration-dragger {
   to { left: 100%; }
 }
+
+@keyframes playing-detector {
+  to { height: 12px; }
+}

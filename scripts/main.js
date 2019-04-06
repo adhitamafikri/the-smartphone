@@ -18,12 +18,6 @@ const chats = [
     time: '16:08'
   },
   {
-    pp: 'https://i.ibb.co/BrFVqFy/Surf.jpg',
-    name: 'Hamish Brandon',
-    message: 'Hey i wanna talk about blockchain',
-    time: '16:08'
-  },
-  {
     pp: 'https://image.ibb.co/cGcWr9/rsz-girl-1.jpg',
     name: 'Caroline Hung',
     message: 'Hey I want to go to cinemas with you',
@@ -41,6 +35,10 @@ const chats = [
     message: 'I am home alone right now',
     time: '16:08'
   }
+]
+
+const contacts = [
+  ''
 ]
 
 const musics = [
@@ -85,12 +83,12 @@ const vm = new Vue({
 
     //#region Music App Variables
     musics: musics,
-    nowPlaying: musics[0],
-    isMusicOpen: true,
-    isMusicPlaying: true,
+    nowPlaying: {},
+    isMusicOpen: false,
+    isMusicPlaying: false,
     isShuffled: false,
     isRepeated: true,
-    musicListOpen: true,
+    musicListOpen: false,
     musicNowPlayingOpen: false,
     //#endregion Music App Variables
   },
@@ -119,6 +117,7 @@ const vm = new Vue({
       this.isMusicOpen = true
       this.statusBarExpanded = false
       this.activeApp = 'music'
+      this.openMusicList()
     },
     openMusicList() {
       this.musicListOpen = true

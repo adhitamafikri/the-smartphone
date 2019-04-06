@@ -18,9 +18,10 @@ $app-bar-padding: $status-bar-h;
     padding: 0 1rem;
   }
   .options {
+    @include flex(row, flex-end, center);
     flex: 1;
-    text-align: right;
     margin: 0 1rem;
     cursor: pointer;
+    > div { margin-left: 1rem; }
   }
 }

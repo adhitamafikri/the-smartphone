@@ -1,11 +1,5 @@
 const chats = [
   {
-    pp: 'https://image.ibb.co/dpzuB9/girl-2.jpg',
-    name: 'Natalie Odell',
-    message: 'I am home alone right now',
-    time: '16:08'
-  },
-  {
     pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg',
     name: 'Terrell Owens',
     message: 'Hey i wanna talk about blockchain',
@@ -20,25 +14,15 @@ const chats = [
   {
     pp: 'https://image.ibb.co/cGcWr9/rsz-girl-1.jpg',
     name: 'Caroline Hung',
-    message: 'Hey I want to go to cinemas with you',
-    time: '16:08'
-  },
-  {
-    pp: 'https://i.ibb.co/BTBZ730/masked.jpg',
-    name: 'Haskell',
-    message: 'Hey i wanna talk about blockchain',
-    time: '16:08'
-  },
-  {
-    pp: 'https://i.ibb.co/DRcjBsF/singer.jpg',
-    name: 'Brigitte Marquis',
-    message: 'I am home alone right now',
+    message: 'Have you done your work?',
     time: '16:08'
   }
 ]
 
 const contacts = [
-  ''
+  { name: 'Terrell Owens', phone: '08213123' },
+  { name: 'Jacqui Martin', phone: '080191283' },
+  { name: 'Caroline Hung', phone: '085234234' },
 ]
 
 const musics = [
@@ -79,6 +63,9 @@ const vm = new Vue({
     //#region WhatsApp Variables
     chats: chats,
     isWAOpen: false,
+    isChatListOpen: false,
+    isSelectContactOpen: false,
+    isConvoOpen: false,
     //#endregion WhatsApp Variables
 
     //#region Music App Variables
@@ -109,6 +96,25 @@ const vm = new Vue({
       this.isWAOpen = true
       this.statusBarExpanded = false
       this.activeApp = 'whatsapp'
+      this.openChatList()
+    },
+    openChatList() {
+      this.isChatListOpen = true
+      this.isSelectContactOpen = false
+      this.isConvoOpen = false
+      this.statusBarExpanded = false
+    },
+    openSearchContact() {
+      this.isChatListOpen = false
+      this.isSelectContactOpen = true
+      this.isConvoOpen = false
+      this.statusBarExpanded = false
+    },
+    openSearchContact() {
+      this.isChatListOpen = false
+      this.isSelectContactOpen = true
+      this.isConvoOpen = false
+      this.statusBarExpanded = false
     },
     //#endregion WhatsApp Variables
 

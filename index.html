@@ -125,7 +125,7 @@
                 </div>
 
                 <div class="scene-page scene-page--whatsapp" v-show="isWAOpen">
-                    <div class="app-content chat-list">
+                    <div class="app-content chat-list" v-show="isChatListOpen">
                         <div class="app-bar theme-whatsapp">
                             <p class="app-title">WhatsApp</p>
                             <div class="options">
@@ -149,7 +149,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="floating-btn theme-whatsapp">
+                    <div class="app-content search-contact" v-show="isSelectContactOpen">
+                        <div class="app-bar theme-whatsapp">
+                            <div class="btn-back" @click="openChatList()">
+                                <span class="fa fa-arrow-left"></span>
+                            </div>
+                            <p class="app-title">Select Contact</p>
+                            <div class="options">
+                                <div class="btn-search"><span class="fa fa-search"></span></div>
+                                <div class="btn-options"><span class="fas fa-ellipsis-v"></span></div>
+                            </div>
+                        </div>
+                        <h1>Search Contact</h1>
+                    </div>
+                    <div class="app-content convo" v-show="isConvoOpen">
+                        <h1>Convo</h1>
+                    </div>
+                    <div class="floating-btn theme-whatsapp" v-show="isChatListOpen"
+                        @click="openSearchContact()">
                         <i class="fa fa-comment-dots"></i>
                     </div>
                 </div>

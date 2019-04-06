@@ -812,10 +812,17 @@ body {
   padding: 0 1rem;
 }
 .app-bar .options {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
   flex: 1;
-  text-align: right;
   margin: 0 1rem;
   cursor: pointer;
+}
+.app-bar .options > div {
+  margin-left: 1rem;
 }
 
 .app-content {

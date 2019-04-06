@@ -3,7 +3,7 @@
     background: #F5F5F5;
   }
   .music-list-card {
-    @include flex(row, space-between, center);
+    @include flex(row, space-between);
     color: black;
     cursor: pointer;
     &:last-child { margin-bottom: 50px; }
@@ -19,19 +19,30 @@
         object-fit: cover;
       }
     }
+    .left-part { padding: 12px 0; }
     .right-part {
+      @include flex(row);
       width: calc(85% - 40px);
       margin-right: 1rem;
       border-bottom: 1px solid rgba(0,0,0,0.2);
       padding: 12px 0;
+      .music-data { flex: 5; }
+      .playing-indicator {
+        background: pink;
+        flex: 1;
+      }
+    }
+    .title, .artist {
+      overflow: hidden;
     }
     .title {
       font-size: 12px;
       margin-bottom: 8px;
     }
     .artist {
-      font-size: 12px;
-      margin-bottom: 8px;
+      height: 16px;
+      font-size: 11px;
+      margin-bottom: 6px;
     }
     .duration { font-size: 11px; }
   }

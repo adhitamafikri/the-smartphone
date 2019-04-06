@@ -514,7 +514,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: nowrap;
   color: black;
   cursor: pointer;
@@ -538,19 +538,38 @@ body {
   height: 100%;
   object-fit: cover;
 }
+.scene-page--musics .music-list-card .left-part {
+  padding: 12px 0;
+}
 .scene-page--musics .music-list-card .right-part {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
   width: calc(85% - 40px);
   margin-right: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 12px 0;
+}
+.scene-page--musics .music-list-card .right-part .music-data {
+  flex: 5;
+}
+.scene-page--musics .music-list-card .right-part .playing-indicator {
+  background: pink;
+  flex: 1;
+}
+.scene-page--musics .music-list-card .title, .scene-page--musics .music-list-card .artist {
+  overflow: hidden;
 }
 .scene-page--musics .music-list-card .title {
   font-size: 12px;
   margin-bottom: 8px;
 }
 .scene-page--musics .music-list-card .artist {
-  font-size: 12px;
-  margin-bottom: 8px;
+  height: 16px;
+  font-size: 11px;
+  margin-bottom: 6px;
 }
 .scene-page--musics .music-list-card .duration {
   font-size: 11px;

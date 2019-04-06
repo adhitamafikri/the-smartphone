@@ -170,17 +170,22 @@
                                 </div>
                             </div>
                             <div class="right-part">
-                                <div class="title text-bold">{{music.title}}</div>
-                                <div class="artist">{{music.artist}}</div>
-                                <div class="duration text-bold">
-                                    {{music.duration}}
+                                <div class="music-data">
+                                    <div class="title text-bold">{{music.title}}</div>
+                                    <div class="artist">{{music.artist}}</div>
+                                    <div class="duration text-bold">
+                                        {{music.duration}}
+                                    </div>
+                                </div>
+                                <div class="playing-indicator">
+                                    <div v-show="nowPlaying.title == music.title">i</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="app-content now-playing" v-show="musicNowPlayingOpen">
                         <div class="app-bar theme-music text-black">
-                            <div class="btn-back">
+                            <div class="btn-back" @click="openMusicList()">
                                 <span class="fa fa-arrow-left"></span>
                             </div>
                             <p class="app-title">Now Playing</p>

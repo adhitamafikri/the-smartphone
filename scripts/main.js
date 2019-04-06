@@ -92,7 +92,6 @@ const vm = new Vue({
     isRepeated: true,
     musicListOpen: false,
     musicNowPlayingOpen: true,
-    musicEqualizerOpen: false,
     //#endregion Music App Variables
   },
   methods: {
@@ -124,19 +123,11 @@ const vm = new Vue({
     openMusicList() {
       this.musicListOpen = true
       this.musicNowPlayingOpen = false
-      this.musicEqualizerOpen = false
       this.statusBarExpanded = false
     },
     openNowPlaying() {
       this.musicListOpen = false
       this.musicNowPlayingOpen = true
-      this.musicEqualizerOpen = false
-      this.statusBarExpanded = false
-    },
-    openEqualizer() {
-      this.musicListOpen = false
-      this.musicNowPlayingOpen = false
-      this.musicEqualizerOpen = true
       this.statusBarExpanded = false
     },
     playMusic(music) {

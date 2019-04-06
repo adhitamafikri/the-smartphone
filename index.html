@@ -125,10 +125,13 @@
                 </div>
 
                 <div class="scene-page scene-page--whatsapp" v-show="isWAOpen">
-                    <div class="app-bar theme-whatsapp">
-                        <p class="app-title">WhatsApp</p>
-                    </div>
-                    <div class="app-content">
+                    <div class="app-content chat-list">
+                        <div class="app-bar theme-whatsapp">
+                            <p class="app-title">WhatsApp</p>
+                            <div class="options">
+                                <div class="btn-options"><span class="fas fa-ellipsis-v"></span></div>
+                            </div>
+                        </div>
                         <div class="wa-chat-card" v-for="chat in chats">
                             <div class="pp-holder">
                                 <img :src="chat.pp" alt="PP" class="round">
@@ -152,14 +155,11 @@
                 </div>
 
                 <div class="scene-page scene-page--musics" v-show="isMusicOpen">
-                    <!-- <div class="app-bar theme-music">
-                        <p class="app-title">Music</p>
-                    </div> -->
                     <div class="app-content music-list" v-show="musicListOpen">
-                        <div class="app-bar theme-music">
-                            <p class="app-title">Music</p>
-                            <div class="btn-options">
-                                <span class="fas fa-ellipsis-v"></span>
+                        <div class="app-bar theme-music text-black">
+                            <p class="app-title">Music Library</p>
+                            <div class="options">
+                                <div class="btn-options"><span class="fas fa-ellipsis-v"></span></div>
                             </div>
                         </div>
                         <div class="music-list-card" v-for="music in musics"
@@ -179,11 +179,16 @@
                         </div>
                     </div>
                     <div class="app-content now-playing" v-show="musicNowPlayingOpen">
-                        <div class="app-bar theme-music">
-                            <div class="btn-back" @click="openMusicList()">
+                        <div class="app-bar theme-music text-black">
+                            <div class="btn-back">
                                 <span class="fa fa-arrow-left"></span>
                             </div>
                             <p class="app-title">Now Playing</p>
+                            <div class="options">
+                                <div class="btn-equalizer">
+                                    <span class="fas fa-sliders-h"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="cover-img">
                             <img :src="nowPlaying.cover" :alt="nowPlaying.title">
@@ -228,27 +233,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="app-content equalizer" v-show="musicEqualizerOpen">
-                        <div class="app-bar theme-music">
-                            <div class="btn-back" @click="openMusicList()">
-                                <span class="fa fa-arrow-left"></span>
-                            </div>
-                            <p class="app-title">Equalizer</p>
-                        </div>
-                        <h1>Equalizer</h1>
-                    </div>
                     <div class="navigation">
                         <div @click="openMusicList()"
                             :class="{selected: musicListOpen}">
-                            <span class="fa fa-home"></span>
+                            <span class="fas fa-stream"></span>
                         </div>
                         <div @click="openNowPlaying()"
                             :class="{selected: musicNowPlayingOpen}">
                             <div class="fab fa-itunes-note"></div>
-                        </div>
-                        <div @click="openEqualizer()"
-                            :class="{selected: musicEqualizerOpen}">
-                            <span class="fas fa-sliders-h"></span>
                         </div>
                     </div>
                 </div>

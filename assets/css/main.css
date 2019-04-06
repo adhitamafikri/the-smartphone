@@ -40,6 +40,10 @@
   text-align: center;
 }
 
+.text-black {
+  color: black !important;
+}
+
 * {
   user-select: none;
 }
@@ -578,9 +582,6 @@ body {
 .scene-page--musics .navigation > div.selected {
   color: #7E57C2;
 }
-.scene-page--musics .navigation .fa-sliders-h {
-  transform: rotate(90deg);
-}
 .scene-page--musics .now-playing .cover-img {
   position: absolute;
   width: 100%;
@@ -651,7 +652,7 @@ body {
   flex-wrap: nowrap;
 }
 .scene-page--musics .now-playing .play-control .top {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 .scene-page--musics .now-playing .play-control .bottom {
   color: #9E9E9E;
@@ -677,7 +678,7 @@ body {
   width: 0%;
   height: inherit;
   border-radius: 20px;
-  animation: duration-meter 10s linear;
+  animation: duration-meter 60s linear;
 }
 .scene-page--musics .now-playing .duration-meter::after {
   background: white;
@@ -686,7 +687,7 @@ body {
   border-radius: 50%;
   margin: -3.5px 0 -7.5px 0;
   box-shadow: 0 1px 2px 1px rgba(126, 87, 194, 0.5);
-  animation: duration-dragger 10s linear;
+  animation: duration-dragger 60s linear;
 }
 .scene-page--musics .now-playing .duration-meter.is-paused::before, .scene-page--musics .now-playing .duration-meter.is-paused::after {
   animation-play-state: paused;
@@ -755,13 +756,15 @@ body {
   z-index: 1;
 }
 .app-bar .btn-back {
+  font-size: 13px;
   margin: 0 0.5rem 0 1rem;
   cursor: pointer;
 }
 .app-bar .app-title {
+  font-size: 15px;
   padding: 0 1rem;
 }
-.app-bar .btn-options {
+.app-bar .options {
   flex: 1;
   text-align: right;
   margin: 0 1rem;

@@ -9,13 +9,15 @@ $app-bar-padding: $status-bar-h;
   padding: $app-bar-padding 0 0 0;
   z-index: 1;
   .btn-back {
+    font-size: 13px;
     margin: 0 0.5rem 0 1rem;
     cursor: pointer;
   }
   .app-title {
+    font-size: 15px;
     padding: 0 1rem;
   }
-  .btn-options {
+  .options {
     flex: 1;
     text-align: right;
     margin: 0 1rem;

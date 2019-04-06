@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$font-fam: 'Roboto', sans-serif;
+
+@mixin flex($dir, $jus: flex-start, $ali: flex-start, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $jus;
+  align-items: $ali;
+  flex-wrap: $wrap;
+}
+
+%pseudo {
+  content: '';
+  display: block;
+}
+
+%with-bg-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+%absolute-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%screen-position {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate3d(0, -50%, 1px);
+}
+
+%activable {
+  &.active { opacity: 1; }
+}

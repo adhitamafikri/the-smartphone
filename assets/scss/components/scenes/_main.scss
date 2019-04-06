@@ -1,0 +1,14 @@
+.scene {
+  @extend %screen-position;
+  @extend %activable;
+  width: $screen-w;
+  height: $screen-h;
+  transition: all 0.2s ease-in;
+  &-bg {
+    @extend %screen-position;
+    width: inherit;
+    height: inherit;
+  }
+}
+
+@import "./smart";

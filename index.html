@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title>The Smartphone</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body>
+    <div class="frame" id="frame">
+        <div class="phone">
+            <div class="front-speaker front-speaker--top"></div>
+            <div class="front-speaker front-speaker--bottom"></div>
+
+            <div class="front-camera"></div>
+            <div class="proximity-sensor"></div>
+
+            <div class="back-part back-part--bone" v-for="id in 16" :key="id" :class="['back-part--bone-' + id]"></div>
+
+            <div class="back-part">
+                <div class="main-camera">
+                    <div class="lens lens--main"></div>
+                    <div class="lens lens--tele"></div>
+                    <div class="flash"></div>
+                </div>
+            </div>
+
+            <div class="screen"></div>
+
+            <div class="scene main-scene" :class="{active: authorized}">
+                <div class="status-bar" @click="statusBarExpanded = !statusBarExpanded">
+                    <div class="notifications">
+                        <span class="fab fa-instagram"></span>
+                        <span class="fab fa-line"></span>
+                        <span class="fa fa-comments"></span>
+                    </div>
+                    <div class="statuses">
+                        <span class="battery"></span>
+                        <span class="clock">16:02</span>
+                    </div>
+                </div>
+                <div class="control-center" :class="{active: statusBarExpanded}">
+                    <div class="brightness">
+                        <span class="fa fa-adjust"></span>
+                        <input type="range" name="brightness" id="brightness" class="brightness-slider" min="0"
+                            max="100">
+                    </div>
+                    <div class="settings">
+                        <div class="settings__item">
+                            <span class="fa fa-wifi"></span>
+                            <p>Wi-Fi</p>
+                        </div>
+                        <div class="settings__item">
+                            <span class="fa fa-plane"></span>
+                            <p>Airplane Mode</p>
+                        </div>
+                        <div class="settings__item">
+                            <span class="fab fa-bluetooth"></span>
+                            <p>Bluetooth</p>
+                        </div>
+                        <div class="settings__item">
+                            <span class="fa fa-map-marker-alt"></span>
+                            <p>Location</p>
+                        </div>
+                        <div class="settings__item">
+                            <span class="fa fa-sim-card"></span>
+                            <p>SIM Card</p>
+                        </div>
+                        <div class="settings__item">
+                            <span class="fa fa-wifi"></span>
+                            <p>Wi-Fi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-bar" :class="[activeApp]">
+                    <div @click="toHome()">
+                        <div class="line-btn"></div>
+                    </div>
+                </div>
+
+                <div class="scene-page scene-page--home">
+                    <div class="scene-bg" @click="doubleTap()"></div>
+                    <div class="google-widget">
+                        <span class="ok-google">Say "Ok Google"</span>
+                        <div class="mic-icon">
+                            <span class="fa fa-microphone"></span>
+                        </div>
+                    </div>
+                    <div class="weather-widget">
+                        <div class="degree">22°C</div>
+                        <div class="location">
+                            <span class="fa fa-map-marker-alt marker"></span>
+                            West Jakarta
+                        </div>
+                        <div class="condition">Partly Sunny</div>
+                        <div class="sun"></div>
+                        <span class="fa fa-cloud cloud"></span>
+                    </div>
+
+                    <div class="app-row">
+                        <div class="app-item" @click="openWA()">
+                            <div class="app-icon app-icon--whatsapp theme-whatsapp">
+                                <span class="fab fa-whatsapp"></span>
+                            </div>
+                            <div class="app-name">WhatsApp</div>
+                        </div>
+                        <div class="app-item" @click="openMusic()">
+                            <div class="app-icon app-icon--music theme-music">
+                                <span class="fa fa-music"></span>
+                            </div>
+                            <div class="app-name">Music</div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon app-icon--images">
+                                <span class="fa fa-images"></span>
+                            </div>
+                            <div class="app-name">Gallery</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scene-page scene-page--whatsapp" v-show="isWAOpen">
+                    <div class="app-bar theme-whatsapp">
+                        <p class="app-title">WhatsApp</p>
+                    </div>
+                    <div class="app-content">
+                        <div class="wa-chat-card" v-for="chat in chats">
+                            <div class="pp-holder">
+                                <img :src="chat.pp" alt="PP" class="round">
+                            </div>
+                            <div class="right-part">
+                                <div class="top">
+                                    <div class="contact-name text-bold">
+                                        {{chat.name}}
+                                    </div>
+                                    <div class="message-time">{{chat.time}}</div>
+                                </div>
+                                <div class="bottom">
+                                    <p class="message-text">{{chat.message}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floating-btn theme-whatsapp">
+                        <i class="fa fa-comment-dots"></i>
+                    </div>
+                </div>
+
+                <div class="scene-page scene-page--musics" v-show="isMusicOpen">
+                    <!-- <div class="app-bar theme-music">
+                        <p class="app-title">Music</p>
+                    </div> -->
+                    <div class="app-content music-list" v-show="musicListOpen">
+                        <div class="app-bar theme-music">
+                            <p class="app-title">Music</p>
+                            <div class="btn-options">
+                                <span class="fas fa-ellipsis-v"></span>
+                            </div>
+                        </div>
+                        <div class="music-list-card" v-for="music in musics"
+                            @click="playMusic(music)">
+                            <div class="left-part">
+                                <div class="cover-img round">
+                                    <img :src="music.cover" :alt="music.artist" class="round">
+                                </div>
+                            </div>
+                            <div class="right-part">
+                                <div class="title text-bold">{{music.title}}</div>
+                                <div class="artist">{{music.artist}}</div>
+                                <div class="duration text-bold">
+                                    {{music.duration}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-content now-playing" v-show="musicNowPlayingOpen">
+                        <div class="app-bar theme-music">
+                            <div class="btn-back" @click="openMusicList()">
+                                <span class="fa fa-arrow-left"></span>
+                            </div>
+                            <p class="app-title">Now Playing</p>
+                        </div>
+                        <div class="cover-img">
+                            <img :src="nowPlaying.cover" :alt="nowPlaying.title">
+                        </div>
+                        <div class="music-details">
+                            <div class="music-img round">
+                                <img :src="nowPlaying.cover" :alt="nowPlaying.title" class="round">
+                            </div>
+                            <div class="music-data">
+                                <p class="title text-center text-bold">{{ nowPlaying.title }}</p>
+                                <p class="artist text-center">{{ nowPlaying.artist }}</p>
+                            </div>
+                        </div>
+                        <div class="play-control">
+                            <div class="top">
+                                <div class="duration-meter"
+                                    :class="{
+                                        'is-paused': !isMusicPlaying,
+                                        'is-repeated': isRepeated
+                                    }"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="btn-shuffle" @click="toggleShuffle()"
+                                    :class="{active: isShuffled}">
+                                    <span class="fas fa-random"></span>
+                                </div>
+                                <div class="btn-backward">
+                                    <span class="fas fa-fast-backward"></span>
+                                </div>
+                                <div class="btn-play-state round"
+                                    @click="togglePlayState()">
+                                    <span class="fa fa-play" v-show="!isMusicPlaying"></span>
+                                    <span class="fa fa-pause" v-show="isMusicPlaying"></span>
+                                </div>
+                                <div class="btn-forward">
+                                    <span class="fas fa-fast-forward"></span>
+                                </div>
+                                <div class="btn-repeat" @click="toggleRepeat()"
+                                    :class="{active: isRepeated}">
+                                    <span class="fas fa-redo-alt"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-content equalizer" v-show="musicEqualizerOpen">
+                        <div class="app-bar theme-music">
+                            <div class="btn-back" @click="openMusicList()">
+                                <span class="fa fa-arrow-left"></span>
+                            </div>
+                            <p class="app-title">Equalizer</p>
+                        </div>
+                        <h1>Equalizer</h1>
+                    </div>
+                    <div class="navigation">
+                        <div @click="openMusicList()"
+                            :class="{selected: musicListOpen}">
+                            <span class="fa fa-home"></span>
+                        </div>
+                        <div @click="openNowPlaying()"
+                            :class="{selected: musicNowPlayingOpen}">
+                            <div class="fab fa-itunes-note"></div>
+                        </div>
+                        <div @click="openEqualizer()"
+                            :class="{selected: musicEqualizerOpen}">
+                            <span class="fas fa-sliders-h"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scene smart-scene" v-if="!authorized">
+                <div class="digi-widget">
+                    <span class="battery">65%</span>
+                    <span class="clock">16:02</span>
+                    <span class="date">Mar 6 Wed</span>
+                </div>
+                <div class="in-screen-fingerprint" @click="authorized = !authorized">
+                    <span class="fas fa-fingerprint"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>

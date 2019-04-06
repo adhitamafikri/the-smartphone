@@ -1,0 +1,29 @@
+$navigation-bar-h: 24px;
+.navigation-bar {
+  background: linear-gradient(transparent, transparentize(black, 0.7));
+  @include flex(row, space-evenly, center);
+  width: 100%;
+  height: $navigation-bar-h;
+  position: absolute;
+  left: 0; bottom: 0;
+  z-index: 1080;
+  transition: all 0.1s ease;
+
+  > div {
+    @include flex(row, center, center);
+    width: 100%;
+    height: 100%;
+  }
+
+  .line-btn {
+    background: #BDBDBD;
+    width: 120px;
+    height: 3px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  &.whatsapp, &.music {
+    background: #F5F5F5;
+  }
+}

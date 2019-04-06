@@ -1,0 +1,143 @@
+$phone-w: 280px;
+$phone-h: 550px;
+$phone-color: linear-gradient(#EEEEEE 50%, #E0E0E0);
+$bone-radius: 25px;
+.phone {
+  background: $phone-color;
+  width: $phone-w;
+  height: $phone-h;
+  border-radius: $bone-radius;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 8px 8px 15px rgba(0,0,0,0.08);
+  transition: all 1s ease-out;
+  transform-style: preserve-3d;
+  // transform: rotate3d(1, -2, 0, 180deg);
+}
+
+$bone-w: 15px;
+.back-part {
+  background: $phone-color;
+  width: $phone-w;
+  height: $phone-h;
+  position: absolute;
+  transform-origin: left;
+  transform:
+    translate3d(100%, 0, -$bone-w)
+    rotatey(180deg);
+  border-radius: $bone-radius;
+  @for $i from 0 through 15 {
+    &--bone-#{$i} {
+      transform:
+        translate3d(100%, 0, -$bone-w + $i)
+        rotatey(180deg);
+    }
+  }
+}
+
+// ## Phone Core Components
+$screen-w: $phone-w;
+$screen-h: $phone-h * 0.92;
+.screen {
+  @extend %screen-position;
+  background: black;
+  width: $screen-w;
+  height: $screen-h;
+  background: linear-gradient(#212121 45%, black 80%);
+  // z-index: 0;
+}
+
+.in-screen-fingerprint {
+  position: absolute;
+  left: 50%; bottom: 2%;
+  transform: translate(-50%, -50%);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.front-speaker {
+  background: #757575;
+  width: 70%;
+  height: 3.5px;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  &--top {
+    top: 0;
+    transform: translate3d(-50%, 0, 1px);
+  }
+  &--bottom {
+    bottom: 0;
+    transform: translate3d(-50%, 0, 1px);
+  }
+}
+
+.physical-btn, .grill {
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 50px;
+}
+
+$proximity-w: 20px;
+$proximity-h: 8px;
+.proximity-sensor {
+  // background: linear-gradient(black, white);
+  width: $proximity-w;
+  height: $proximity-h;
+  border-radius: 15px;
+  border: 1px solid rgba(0,0,0,0.1);
+  position: absolute;
+  left: 19%; top: 2.25%;
+  transform: translate3d(-50%, -50%, 1px);
+}
+
+$front-cam-size: 10px;
+.front-camera {
+  background: linear-gradient(#212121 45%, black 80%);
+  width: $front-cam-size;
+  height: $front-cam-size;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%; top: 2.25%;
+  transform: translate3d(-50%, -50%, 1px);
+  &::after {
+    @extend %pseudo;
+    @extend %absolute-center;
+    background: rgba(255,255,255,0.9);
+    width: $front-cam-size * 0.3;
+    height: $front-cam-size * 0.3;
+    border-radius: inherit;
+  }
+}
+
+$cam-w: 40px;
+$cam-h: 100px;
+.main-camera {
+  background: rgba(0,0,0,0.75);
+  width: $cam-w;
+  height: $cam-h;
+  border: 2px solid #E0E0E0;
+  border-radius: 25px;
+  position: absolute;
+  left: 50%; top: 18%;
+  transform: translate(-50%, -50%);
+  .lens, .flash {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .lens {
+    background: radial-gradient(rgba(255,255,255,0.5) 30%, black 60%);
+    width: $cam-w * 0.4;
+    height: $cam-w * 0.4;
+    border-radius: inherit;
+    &--main { top: 20%; }
+    &--tele { top: 80%; }
+  }
+  .flash {
+    background: radial-gradient(#FFF9C4 30%, rgba(255,255,255,0.1) 40%);
+    width: $cam-w * 0.5;
+    height: $cam-w * 0.5;
+    border-radius: 50px;
+    top: 50%;
+  }
+}

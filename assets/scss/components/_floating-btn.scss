@@ -1,0 +1,10 @@
+.floating-btn {
+  @include flex(row, center, center);
+  position: absolute;
+  bottom: 4%; right: 0;
+  transform: translate(-25%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}

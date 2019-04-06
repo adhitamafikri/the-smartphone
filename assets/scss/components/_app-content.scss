@@ -1,0 +1,9 @@
+.app-content {
+  background: #F5F5F5;
+  position: absolute;
+  width: 100%;
+  height: $screen-h - $app-bar-h - $app-bar-padding - $status-bar-h - 4px;
+  margin-top: $app-bar-h + $app-bar-padding;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

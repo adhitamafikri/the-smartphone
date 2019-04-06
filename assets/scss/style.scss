@@ -1,0 +1,55 @@
+@import "./utilities";
+.round { border-radius: 50%; }
+.text-bold { font-weight: bold; }
+.text-center { text-align: center; }
+
+* { user-select: none; }
+
+$body-gradient: linear-gradient(#AD1457, #880E4F);
+body {
+  @include flex(row, center, center);
+  margin: 0;
+  padding: 0;
+  background: $body-gradient;
+  height: 100vh;
+  font-family: $font-fam;
+  // overflow: hidden;
+}
+
+.frame {
+  // &:hover > .phone {
+  //   transform: rotate3d(1, -2, 0, 180deg);
+  // }
+}
+
+// ## Themes
+@import "./themes";
+
+// ## Phone and its components (HW)
+@import "./components/phone";
+
+// ## Status bar and Navigation Bar
+@import "./components/status-bar";
+@import "./components/navigation-bar";
+
+// ## Scenes
+@import "./components/scenes/main";
+
+// ## Scene Pages
+@import "./components/scenes/pages/index";
+
+// ## Floating Button
+@import "./components/floating-btn";
+
+// ## App Bar
+@import "./components/app-bar";
+// ## App Content
+@import "./components/app-content";
+
+// ## Widgets
+@import "./components/widgets/digi-clock";
+@import "./components/widgets/google-now";
+@import "./components//widgets/weather";
+
+// ## Animations
+@import "./animations";

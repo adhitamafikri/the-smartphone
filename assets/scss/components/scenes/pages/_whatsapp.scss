@@ -1,0 +1,61 @@
+.scene-page--whatsapp {
+  .wa-chat-card {
+    @include flex(row, space-around);
+    color: black;
+    width: 100%;
+    height: 50px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 8px 0;
+    position: relative;
+    &:last-child {
+      margin-bottom: 50px;
+    }
+    &::after {
+      @extend %pseudo;
+      background: rgba(0,0,0,0.08);
+      position: absolute;
+      bottom: 0; right: 5%;
+      width: 80%;
+      height: 1px;
+    }
+    .pp-holder {
+      @extend %with-bg-img;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-left: 8px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .right-part {
+      @include flex(column);
+      width: 80%;
+      .top, .bottom {
+        width: 100%;
+      }
+      .top {
+        @include flex(row, space-between);
+        .contact-name {
+          font-size: 12px;
+          margin-left: 8px;
+        }
+        .message-time {
+          font-size: 10px;
+          margin-right: 8px;
+        }
+      }
+      .bottom {
+        margin: 0 8px;
+        .message-text {
+          font-size: 12px;
+          text-overflow: ellipsis;
+          height: 10px;
+        }
+      }
+    }
+  }
+}

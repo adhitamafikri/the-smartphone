@@ -1,0 +1,178 @@
+.scene-page--musics {
+  .app-content {
+    background: #F5F5F5;
+  }
+  .music-list-card {
+    @include flex(row, space-between, center);
+    color: black;
+    cursor: pointer;
+    &:last-child { margin-bottom: 50px; }
+    .cover-img {
+      @include flex(row, center, center);
+      background: orange;
+      width: 40px;
+      height: 40px;
+      margin-left: 1rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .right-part {
+      width: calc(85% - 40px);
+      margin-right: 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+      padding: 12px 0;
+    }
+    .title {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .artist {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .duration { font-size: 11px; }
+  }
+
+  $music-nav-h: 35px;
+  .navigation {
+    @include flex(row, center, center);
+    position: fixed;
+    width: 100%;
+    height: $music-nav-h;
+    bottom: 0;
+    margin-bottom: $navigation-bar-h;
+    border-top: 1px solid rgba(0,0,0,0.075);
+    color: #9E9E9E;
+    transition: all 0.3s ease;
+    > div {
+      @include flex(column, center, center);
+      margin: 0 2rem;
+      cursor: pointer;
+      &.selected { color: #7E57C2; }
+    }
+    .fa-sliders-h { transform: rotate(90deg); }
+  }
+
+  .now-playing {
+    .cover-img {
+      position: absolute;
+      width: 100%;
+      height: 160px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.4;
+      }
+      &::after {
+        @extend %pseudo;
+        background: rgba(0,0,0,0.4);
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .music-details {
+      @include flex(column, center, center);
+      position: absolute;
+      top: 40%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      .music-img {
+        background: white;
+        width: 140px;
+        height: 140px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 16px 0 rgba(0,0,0,0.15);
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .title, .artist {
+        color: #757575;
+        margin: 0;
+        margin-bottom: 8px;
+      }
+      .title { font-size: 14px; }
+      .artist { font-size: 12px; }
+    }
+
+    .play-control {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      padding: 16px 0;
+      margin-bottom: $music-nav-h;
+      .top, .bottom { @include flex(row, space-evenly, center); }
+      .top { margin-bottom: 16px; }
+      .bottom {
+        color: #9E9E9E;
+        > div { cursor: pointer; }
+      }
+    }
+
+    .duration-meter {
+      background: transparentize(#7E57C2, 0.6);
+      width: 85%;
+      height: 4px;
+      border-radius: 20px;
+      position: relative;
+      &::before, &::after {
+        @extend %pseudo;
+        position: absolute;
+        top: 0; left: 0;
+        transition: all 0.2s ease;
+      }
+      &::before {
+        background: #7E57C2;
+        width: 0%;
+        height: inherit;
+        border-radius: 20px;
+        animation: duration-meter 10s linear;
+      }
+      &::after {
+        background: white;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin: -3.5px 0 -7.5px 0;
+        box-shadow: 0 1px 2px 1px transparentize(#7E57C2, 0.5);
+        animation: duration-dragger 10s linear;
+      }
+      &.is-paused {
+        &::before, &::after { animation-play-state: paused; }
+      }
+      &.is-repeated {
+        &::before, &::after { animation-iteration-count: infinite; }
+      }
+    }
+
+    .btn-backward, .btn-forward {
+      transition: all 0.1s ease;
+      &:active { color: #7E57C2; }
+    }
+    .btn-shuffle, .btn-repeat {
+      transition: all 0.1s ease;
+      &.active { color: #7E57C2; }
+    }
+    .btn-play-state {
+      @include flex(row, center, center);
+      background: #7E57C2;
+      width: 40px;
+      height: 40px;
+      color: white;
+      .fa-play { margin-left: 4px; }
+    }
+  }
+
+  .equalizer {
+    color: black;
+  }
+}

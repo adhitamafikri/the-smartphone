@@ -1,0 +1,43 @@
+$weather-widget-theme: linear-gradient(#0288D1 55%, #EEEEEE);
+.weather-widget {
+  background: $weather-widget-theme;
+  width: $screen-w * 0.9;
+  height: 60px;
+  position: absolute;
+  top: 27%; left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.1);
+  .degree {
+    position: absolute;
+    left: 5%; top: 28%;
+    font-size: 1.35rem;
+  }
+  .condition {
+    position: absolute;
+    right: 28%; top: 56%;
+    font-size: 0.7rem;
+  }
+  .location {
+    @include flex(row, flex-start, center);
+    position: absolute;
+    right: 28%; top: 26%;
+    font-size: 0.9rem;
+    .marker {
+      font-size: 0.55rem;
+      margin-right: 0.4rem;
+    }
+  }
+  .sun {
+    background: #FFD54F;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: absolute;
+    right: 10%; top: 15%;
+  }
+  .cloud {
+    font-size: 2.2rem;
+    position: absolute;
+    right: 4%; top: 25%;
+  }
+}

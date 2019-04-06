@@ -1,0 +1,20 @@
+.digi-widget {
+  @include flex(column, center, center);
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid #AD1457;
+  border-radius: 50%;
+  .battery {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+  .clock {
+    font-size: 2.6rem;
+    margin-bottom: 0.85rem;
+  }
+  .date { font-size: 0.8rem; }
+}

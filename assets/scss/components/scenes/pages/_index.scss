@@ -1,0 +1,16 @@
+$wallpaper: 'https://i.ibb.co/KqDXCCr/material-android.jpg';
+.scene-page {
+  @extend %screen-position;
+  width: inherit;
+  height: inherit;
+  background-color: palevioletred;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+}
+
+// pages
+@import "./home";
+@import "./whatsapp";
+@import "./musics";

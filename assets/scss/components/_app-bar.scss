@@ -1,0 +1,24 @@
+$app-bar-h: 45px;
+$app-bar-padding: $status-bar-h;
+.app-bar {
+  @include flex(row, flex-start, center);
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: $app-bar-h;
+  padding: $app-bar-padding 0 0 0;
+  z-index: 1;
+  .btn-back {
+    margin: 0 0.5rem 0 1rem;
+    cursor: pointer;
+  }
+  .app-title {
+    padding: 0 1rem;
+  }
+  .btn-options {
+    flex: 1;
+    text-align: right;
+    margin: 0 1rem;
+    cursor: pointer;
+  }
+}

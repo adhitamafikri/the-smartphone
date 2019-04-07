@@ -169,7 +169,8 @@
                                     autofocus>
                             </div>
                         </div>
-                        <div class="wa-contact-card" v-for="contact in filteredContacts">
+                        <div class="wa-contact-card" v-for="contact in filteredContacts"
+                            @click="openConvo(contact)">
                             <div class="pp-holder round">
                                 <img :src="contact.pp" :alt="contact.name" class="round">
                             </div>
@@ -254,7 +255,8 @@
                                 <div class="duration-meter"
                                     :class="{
                                         'is-paused': !isMusicPlaying,
-                                        'is-repeated': isRepeated
+                                        'is-repeated': isRepeated,
+                                        'is-stopped': isStopped
                                     }"></div>
                             </div>
                             <div class="bottom">
@@ -262,15 +264,15 @@
                                     :class="{active: isShuffled}">
                                     <span class="fas fa-random"></span>
                                 </div>
-                                <div class="btn-backward">
+                                <div class="btn-backward" @click="prevMusic()">
                                     <span class="fas fa-fast-backward"></span>
                                 </div>
                                 <div class="btn-play-state round"
                                     @click="togglePlayState()">
-                                    <span class="fa fa-play" v-show="!isMusicPlaying"></span>
-                                    <span class="fa fa-pause" v-show="isMusicPlaying"></span>
+                                    <span class="fa fa-play" v-show="!isMusicPlaying && !isStopped"></span>
+                                    <span class="fa fa-pause" v-show="isMusicPlaying || isStopped"></span>
                                 </div>
-                                <div class="btn-forward">
+                                <div class="btn-forward" @click="nextMusic()">
                                     <span class="fas fa-fast-forward"></span>
                                 </div>
                                 <div class="btn-repeat" @click="toggleRepeat()"

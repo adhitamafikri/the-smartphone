@@ -78,6 +78,7 @@ const vm = new Vue({
     isMusicPlaying: false,
     isShuffled: false,
     isRepeated: true,
+    isStopped: false,
     musicListOpen: false,
     musicNowPlayingOpen: false,
     //#endregion Music App Variables
@@ -113,10 +114,11 @@ const vm = new Vue({
       this.isConvoOpen = false
       this.statusBarExpanded = false
     },
-    openSearchContact() {
+    openConvo(contact) {
+      console.log(contact)
       this.isChatListOpen = false
-      this.isSelectContactOpen = true
-      this.isConvoOpen = false
+      this.isSelectContactOpen = false
+      this.isConvoOpen = true
       this.statusBarExpanded = false
     },
     toggleSearchbar() {
@@ -145,7 +147,9 @@ const vm = new Vue({
       this.statusBarExpanded = false
     },
     playMusic(music) {
-      console.log('playing', music)
+      setTimeout(() => {
+        this.isStopped = false
+      }, 200)
       this.nowPlaying = music
       this.openNowPlaying()
     },
@@ -157,6 +161,23 @@ const vm = new Vue({
     },
     toggleRepeat() {
       this.isRepeated = !this.isRepeated
+    },
+    nextMusic() {
+      let id = this.musics.indexOf(this.nowPlaying)
+      if(id == this.musics.length - 1) this.nowPlaying = this.musics[0]
+      else this.nowPlaying = this.musics[id+1]
+      this.stopMusic()
+      this.playMusic(this.nowPlaying)
+    },
+    prevMusic() {
+      let id = this.musics.indexOf(this.nowPlaying)
+      if(id == 0) this.nowPlaying = this.musics[this.musics.length - 1]
+      else this.nowPlaying = this.musics[id-1]
+      this.stopMusic()
+      this.playMusic(this.nowPlaying)
+    },
+    stopMusic() {
+      this.isStopped = true
     },
     //#endregion Music App Methods
 

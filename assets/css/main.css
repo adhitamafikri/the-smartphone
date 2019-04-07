@@ -736,6 +736,9 @@ body {
 .scene-page--musics .now-playing .duration-meter.is-repeated::before, .scene-page--musics .now-playing .duration-meter.is-repeated::after {
   animation-iteration-count: infinite;
 }
+.scene-page--musics .now-playing .duration-meter.is-stopped::before, .scene-page--musics .now-playing .duration-meter.is-stopped::after {
+  animation: none;
+}
 .scene-page--musics .now-playing .btn-backward, .scene-page--musics .now-playing .btn-forward {
   transition: all 0.1s ease;
 }

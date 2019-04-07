@@ -5,7 +5,7 @@ const contacts = [
   { pp: 'https://i.ibb.co/BrFVqFy/Surf.jpg', name: 'Harry', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
   { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Jarrell Owens', phone: '082131239', status: 'A guy with his wavey hair' },
   { pp: 'https://i.ibb.co/Hqk8L5G/sunset.jpg', name: 'Kevin F', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
-  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'My Crush', phone: '08xxxxxx', status: 'Needs a warm hug'},
+  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Her', phone: '08xxxxxx', status: 'What a time to be alive'},
   { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Wahyu', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
 ]
 
@@ -38,10 +38,22 @@ let chats = [
       { from: 'me', message: 'Ayy, boy what\'s poppin?', time: '16:08' }
     ]
   },
+  {
+    contact: contacts[3],
+    conversations: [
+      { from: 'other', message: 'Woe', time: '16:08' },
+    ]
+  },
 ]
 
-let crushReplies = [
-  'Hi! What\'s up? 😄'
+let herReplies = [
+  'Hi, Fik! What\'s up? 😄',
+  'Honestly...',
+  'I do really like you too, from the first time we met 😊.',
+  'and i really want to get closer to you',
+  'for sure...',
+  '7PM ?',
+  'see you there 😄'
 ]
 
 const musics = [
@@ -91,8 +103,9 @@ const vm = new Vue({
     isSelectContactOpen: false,
     isConvoOpen: false,
     isSearchbarOpen: false,
-    crushReplies: crushReplies,
-    crushRepliesCount: 0,
+    herReplies: herReplies,
+    herRepliesCount: 0,
+    yourFlirtCount: 0,
     //#endregion WhatsApp Variables
 
     //#region Music App Variables
@@ -175,7 +188,6 @@ const vm = new Vue({
       messageObj.from = 'me'
       messageObj.message = this.convoText
       messageObj.time = time
-      this.convoText = ''
       this.currentConvo.conversations.push({...messageObj})
       this.$refs['texting_field'].focus()
 
@@ -185,12 +197,16 @@ const vm = new Vue({
       this.chats = [...newChatList]
       
       // play a rigged auto reply
-      if(this.currentConvo.contact.name == 'My Crush') {
-        console.log('yesyeyaeyawe')
-        this.autoReply(this.crushReplies[this.crushRepliesCount])
+      if(this.currentConvo.contact.name == 'Her') {
+        console.log(this.herRepliesCount, this.yourFlirtCount)
+        this.autoReply(this.herReplies[this.herRepliesCount])
+      } else if(this.currentConvo.contact.name == 'Harry') {
+        if(this.convoText == 'shite lah') setTimeout(() => this.autoReply('dih ngegad'), 1000);
+        else setTimeout(() => this.autoReply(`lah, coba sendiri lah. W mana pernah sepik-sepik awkawk :')`), 1000);
       } else {
-        setTimeout(() => this.autoReply('This is a reply for you :)'), 1000);
+        setTimeout(() => this.autoReply('Not now, Fik. I am busy right now.'), 1000);
       }
+      this.convoText = ''
     },
     autoReply(message) {
       let time = this.getCurrentTime()

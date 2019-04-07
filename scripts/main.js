@@ -8,46 +8,26 @@ const contacts = [
   { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Warren', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
 ]
 
-const chats = [
-  {
-    pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg',
-    name: 'Terrell Owens',
-    message: 'Up for the next challenges?',
-    time: '16:08'
-  },
-  {
-    pp: 'https://image.ibb.co/k9PNyp/boy-1.jpg',
-    name: 'Aditya Singh',
-    message: 'Boii your work is lit!!',
-    time: '16:08'
-  },
-  {
-    pp: 'https://image.ibb.co/cGcWr9/rsz-girl-1.jpg',
-    name: 'Caroline Hung',
-    message: 'I love your works!',
-    time: '16:08'
-  }
-]
-
 let chats = [
   {
     contact: contacts[0],
     conversations: [
-      { from: 'Aditya Singh', message: 'Hello', time: '16:02' },
-      { from: 'me', message: 'awkkwawk', time: '16:08' }
+      { from: 'sender', message: 'Hello', time: '16:02' },
+      { from: 'me', message: 'Hello, Singh! What\'s up?', time: '16:08' },
+      { from: 'sender', message: 'hey i like your works!', time: '16:08' }
     ]
   },
   {
     contact: contacts[2],
     conversations: [
-      { from: 'Aditya Singh', message: 'Hello' },
-      { from: 'me', message: 'awkkwawk' }
+      { from: 'sender', message: 'Hi, Fikri', time: '16:08' },
+      { from: 'me', message: 'Hi, Caroline!!', time: '16:08' }
     ]
   },
 ]
 
 let currentConvo = {
-  contact: contacts[1],
+  contact: {},
   conversations: []
 }
 
@@ -89,13 +69,13 @@ const vm = new Vue({
     //#region WhatsApp Variables
     chats: chats,
     contacts: contacts,
+    currentConvo: currentConvo,
+    contactSearchText: '',
     isWAOpen: false,
     isChatListOpen: false,
     isSelectContactOpen: false,
     isConvoOpen: false,
     isSearchbarOpen: false,
-    contactSearchText: '',
-    currentConvo: currentConvo,
     //#endregion WhatsApp Variables
 
     //#region Music App Variables
@@ -149,7 +129,13 @@ const vm = new Vue({
       this.isConvoOpen = true
       this.statusBarExpanded = false
 
-      console.log('convo', convos.map(conv => conv.contact).indexOf(contact))
+      let chatID = chats.map(chat => chat.contact).indexOf(contact)
+      if(chatID > -1) {
+        this.currentConvo = chats[chatID]
+        console.log('found')
+      } else {
+        console.log('not found')
+      }
     },
     toggleSearchbar() {
       this.isSearchbarOpen = !this.isSearchbarOpen

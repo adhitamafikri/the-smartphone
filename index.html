@@ -132,19 +132,24 @@
                                 <div class="btn-options"><span class="fas fa-ellipsis-v"></span></div>
                             </div>
                         </div>
-                        <div class="wa-chat-card" v-for="chat in chats">
+                        <div class="wa-chat-card" v-for="chat in chats"
+                            @click="openConvo(chat.contact)">
                             <div class="pp-holder">
-                                <img :src="chat.pp" alt="PP" class="round">
+                                <img :src="chat.contact.pp" alt="PP" class="round">
                             </div>
                             <div class="right-part">
                                 <div class="top">
                                     <div class="contact-name text-bold">
-                                        {{chat.name}}
+                                        {{ chat.contact.name }}
                                     </div>
-                                    <div class="message-time">{{chat.time}}</div>
+                                    <div class="message-time">
+                                        {{ chat.conversations[chat.conversations.length - 1].time }}
+                                    </div>
                                 </div>
                                 <div class="bottom">
-                                    <p class="message-text">{{chat.message}}</p>
+                                    <p class="message-text">
+                                        {{ chat.conversations[chat.conversations.length - 1].message }}
+                                    </p>
                                 </div>
                             </div>
                         </div>

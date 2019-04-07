@@ -150,12 +150,15 @@ const vm = new Vue({
       let chatID = this.chats.map(chat => chat.contact).indexOf(contact)
       if(chatID > -1) this.currentConvo = this.chats[chatID]
       else {
-        let newChat = chatObject
+        let newChat = {
+          contact: {},
+          conversations: []
+        }
         newChat.contact = contact
-        newChat.conversations.push(conversationsObject)
-        this.currentConvo = {...newChat}
         this.chats.unshift({...newChat})
+        this.currentConvo = this.chats[0]
       }
+      setTimeout(() => this.$refs['texting_field'].focus(), 200);
     },
     sendMessage() {
       let time = this.getCurrentTime()
@@ -165,7 +168,7 @@ const vm = new Vue({
       messageObj.time = time
       this.convoText = ''
       this.currentConvo.conversations.push({...messageObj})
-      setTimeout(() => this.autoReply(), 1000)
+      // setTimeout(() => this.autoReply(), 1000)
     },
     autoReply() {
       let time = this.getCurrentTime()

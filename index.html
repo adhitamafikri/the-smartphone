@@ -142,12 +142,12 @@
                                     <div class="contact-name text-bold">
                                         {{ chat.contact.name }}
                                     </div>
-                                    <div class="message-time">
+                                    <div class="message-time" v-if="chat.conversations.length">
                                         {{ chat.conversations[chat.conversations.length - 1].time }}
                                     </div>
                                 </div>
                                 <div class="bottom">
-                                    <p class="message-text">
+                                    <p class="message-text" v-if="chat.conversations.length">
                                         {{ chat.conversations[chat.conversations.length - 1].message }}
                                     </p>
                                 </div>
@@ -216,7 +216,8 @@
                             <input type="text" name="convo" id="convo_textfield"
                                 class="texting-field"
                                 v-model="convoText"
-                                @keyup.enter="sendMessage()">
+                                @keyup.enter="sendMessage()"
+                                ref="texting_field">
                             <div class="btn-voice theme-whatsapp round">
                                 <span class="fa fa-microphone"></span>
                             </div>

@@ -24,4 +24,15 @@ $app-bar-padding: $status-bar-h;
     cursor: pointer;
     > div { margin-left: 1rem; }
   }
+  
+  .searchbar-layer {
+    @include flex(row, center, center);
+    position: absolute;
+    width: 100%;
+    height: $app-bar-h;
+    input {
+      flex: 1;
+      margin: 0 1rem;
+    }
+  }
 }

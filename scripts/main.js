@@ -7,7 +7,7 @@ const chats = [
   },
   {
     pp: 'https://image.ibb.co/k9PNyp/boy-1.jpg',
-    name: 'Jacqui Martin',
+    name: 'Aditya Singh',
     message: 'Boii your work is lit!!',
     time: '16:08'
   },
@@ -20,9 +20,9 @@ const chats = [
 ]
 
 const contacts = [
+  { pp: 'https://image.ibb.co/k9PNyp/boy-1.jpg', name: 'Aditya Singh', phone: '080191283', status: 'Thank God' },
+  { pp: 'https://image.ibb.co/cGcWr9/rsz-girl-1.jpg', name: 'Caroline Hung', phone: '085234234', status: 'Young Hustler'},
   { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Terrell Owens', phone: '082131239', status: 'I\'m a bad guy' },
-  { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Jacqui Martin', phone: '080191283', status: 'Thank God' },
-  { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Caroline Hung', phone: '085234234', status: 'Young Hustler'},
 ]
 
 const musics = [
@@ -62,10 +62,13 @@ const vm = new Vue({
 
     //#region WhatsApp Variables
     chats: chats,
+    contacts: contacts,
     isWAOpen: false,
     isChatListOpen: false,
     isSelectContactOpen: false,
     isConvoOpen: false,
+    isSearchbarOpen: false,
+    contactSearchText: '',
     //#endregion WhatsApp Variables
 
     //#region Music App Variables
@@ -116,6 +119,12 @@ const vm = new Vue({
       this.isConvoOpen = false
       this.statusBarExpanded = false
     },
+    toggleSearchbar() {
+      this.isSearchbarOpen = !this.isSearchbarOpen
+    },
+    // filteredContacts() {
+    //   return this.contacts
+    // },
     //#endregion WhatsApp Variables
 
     //#region Music App Methods
@@ -160,9 +169,14 @@ const vm = new Vue({
       this.musicNowPlayingOpen = false
     }
   },
+  computed: {
+    filteredContacts() {
+      return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.contactSearchText.toLowerCase()))
+    }
+  },
   mounted() {
     this.$nextTick(function() {
-      console.log(this.$data)
+      console.log('Ready!')
     })
   }
 })

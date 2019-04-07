@@ -156,11 +156,20 @@
                             </div>
                             <p class="app-title">Select Contact</p>
                             <div class="options">
-                                <div class="btn-search"><span class="fa fa-search"></span></div>
+                                <div class="btn-search" @click="toggleSearchbar()"><span class="fa fa-search"></span></div>
                                 <div class="btn-options"><span class="fas fa-ellipsis-v"></span></div>
                             </div>
+                            <div class="searchbar-layer" v-show="isSearchbarOpen">
+                                <div class="btn-back" @click="toggleSearchbar()">
+                                    <span class="fa fa-arrow-left"></span>
+                                </div>
+                                <input type="text" name="contact" id="contact-textbox"
+                                    placeholder="Search.."
+                                    v-model="contactSearchText"
+                                    autofocus>
+                            </div>
                         </div>
-                        <div class="wa-contact-card" v-for="contact in contacts">
+                        <div class="wa-contact-card" v-for="contact in filteredContacts">
                             <div class="pp-holder round">
                                 <img :src="contact.pp" :alt="contact.name" class="round">
                             </div>

@@ -453,6 +453,7 @@ body {
   margin-bottom: 2%;
   padding: 8px 0;
   position: relative;
+  cursor: pointer;
 }
 .scene-page--whatsapp .wa-chat-card:last-child, .scene-page--whatsapp .wa-contact-card:last-child {
   margin-bottom: 50px;
@@ -816,6 +817,20 @@ body {
 }
 .app-bar .options > div {
   margin-left: 1rem;
+}
+.app-bar .searchbar-layer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: absolute;
+  width: 100%;
+  height: 45px;
+}
+.app-bar .searchbar-layer input {
+  flex: 1;
+  margin: 0 1rem;
 }
 
 .app-content {

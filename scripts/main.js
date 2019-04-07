@@ -66,6 +66,13 @@ const musics = [
   }
 ]
 
+function getCurrentTime() {
+  let dt = new Date()
+  let hour = dt.getHours()
+  let mins = dt.getMinutes() < 10 ? `0${dt.getMinutes()}` : dt.getMinutes()
+  return `${hour}:${mins}`
+}
+
 const vm = new Vue({
   el: '#frame',
   data: {
@@ -73,6 +80,7 @@ const vm = new Vue({
     statusBarExpanded: false,
     taps: 0,
     activeApp: '',
+    currentTime: getCurrentTime(),
 
     //#region WhatsApp Variables
     chats: chats,
@@ -239,7 +247,7 @@ const vm = new Vue({
   },
   mounted() {
     this.$nextTick(function() {
-      console.log('Ready!')
+      console.log('Ready!', this.currentTime)
     })
   }
 })

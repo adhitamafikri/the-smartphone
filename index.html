@@ -41,7 +41,7 @@
                     </div>
                     <div class="statuses">
                         <span class="battery"></span>
-                        <span class="clock">16:02</span>
+                        <span class="clock">{{ currentTime }}</span>
                     </div>
                 </div>
                 <div class="control-center" :class="{active: statusBarExpanded}">
@@ -333,7 +333,7 @@
             <div class="scene smart-scene" v-if="!authorized">
                 <div class="digi-widget">
                     <span class="battery">65%</span>
-                    <span class="clock">16:02</span>
+                    <span class="clock">{{ currentTime }}</span>
                     <span class="date">Mar 6 Wed</span>
                 </div>
                 <div class="in-screen-fingerprint" @click="authorized = !authorized">

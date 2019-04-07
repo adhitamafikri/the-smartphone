@@ -148,7 +148,9 @@ const vm = new Vue({
       this.statusBarExpanded = false
       this.activeApp = 'convo'
       let chatID = this.chats.map(chat => chat.contact).indexOf(contact)
-      if(chatID > -1) this.currentConvo = this.chats[chatID]
+      if(chatID > -1) {
+        this.currentConvo = this.chats[chatID]
+      }
       else {
         let newChat = {
           contact: {},
@@ -168,6 +170,12 @@ const vm = new Vue({
       messageObj.time = time
       this.convoText = ''
       this.currentConvo.conversations.push({...messageObj})
+      this.$refs['texting_field'].focus()
+
+      // bring the current chat to top
+      let newChatList = this.chats.filter(v => v !== this.currentConvo )
+      newChatList.unshift(this.currentConvo)
+      this.chats = [...newChatList]
       // setTimeout(() => this.autoReply(), 1000)
     },
     autoReply() {

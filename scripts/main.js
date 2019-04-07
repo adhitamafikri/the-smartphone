@@ -19,6 +19,8 @@ let conversationsObject = {
   time: ''
 }
 
+let currentConvo = chatObject
+
 let chats = [
   {
     contact: contacts[0],
@@ -36,11 +38,6 @@ let chats = [
     ]
   },
 ]
-
-let currentConvo = {
-  contact: {},
-  conversations: []
-}
 
 const musics = [
   {
@@ -147,8 +144,8 @@ const vm = new Vue({
         let newChat = chatObject
         newChat.contact = contact
         newChat.conversations.push(conversationsObject)
-        console.log(newChat)
         this.currentConvo = newChat
+        this.chats.unshift(this.currentConvo)
       }
     },
     toggleSearchbar() {

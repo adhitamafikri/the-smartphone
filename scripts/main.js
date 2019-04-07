@@ -31,10 +31,10 @@ let chats = [
     ]
   },
   {
-    contact: contacts[2],
+    contact: contacts[3],
     conversations: [
-      { from: 'sender', message: 'Hi, Fikri', time: '16:08' },
-      { from: 'me', message: 'Hi, Caroline!!', time: '16:08' }
+      { from: 'sender', message: 'Yo, Fikri', time: '16:08' },
+      { from: 'me', message: 'Ayy, boy what\'s poppin?', time: '16:08' }
     ]
   },
 ]
@@ -79,6 +79,7 @@ const vm = new Vue({
     contacts: contacts,
     currentConvo: currentConvo,
     contactSearchText: '',
+    convoText: '',
     isWAOpen: false,
     isChatListOpen: false,
     isSelectContactOpen: false,
@@ -122,6 +123,7 @@ const vm = new Vue({
       this.isSelectContactOpen = false
       this.isConvoOpen = false
       this.statusBarExpanded = false
+      this.activeApp = 'whatsapp'
     },
     openSearchContact() {
       this.isChatListOpen = false
@@ -129,6 +131,7 @@ const vm = new Vue({
       this.isConvoOpen = false
       this.statusBarExpanded = false
       this.contactSearchText = ''
+      this.activeApp = 'whatsapp'
     },
     openConvo(contact) {
       this.isChatListOpen = false
@@ -148,6 +151,17 @@ const vm = new Vue({
         this.chats.unshift(newChat)
         console.log(this.chats)
       }
+    },
+    sendMessage() {
+      let dt = new Date()
+      let hour = dt.getHours()
+      let mins = dt.getMinutes() < 10 ? `0${dt.getMinutes()}` : dt.getMinutes()
+      let messageObj = conversationsObject
+      messageObj.from = 'me'
+      messageObj.message = this.convoText
+      messageObj.time = `${hour}:${mins}`
+      this.convoText = ''
+      this.currentConvo.conversations.push(messageObj)
     },
     toggleSearchbar() {
       this.isSearchbarOpen = !this.isSearchbarOpen

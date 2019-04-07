@@ -38,9 +38,8 @@
     .right-part {
       @include flex(column);
       width: 80%;
-      .top, .bottom {
-        width: 100%;
-      }
+      .top { width: 100%; }
+      .bottom { width: 80% }
       .top {
         @include flex(row, space-between);
         .contact-name {
@@ -55,16 +54,49 @@
       .bottom {
         margin: 0 8px;
         .message-text, .contact-status {
+          height: 16px;
           font-size: 11px;
           text-overflow: ellipsis;
           margin: 8px 0;
+          overflow: hidden;
         }
       }
     }
   }
 
+  .wa-convo-row {
+    width: 100%;
+    padding: 1rem 0 0.2rem 0;
+    &.me { @include flex(row, flex-end, center); }
+    &.theirs { @include flex(row, flex-start, center); }
+  }
+
+  .convo-bubble {
+    @include flex(row, flex-start, flex-end);
+    background: white;
+    color: black;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 0 1rem;
+    .message {
+      flex: 5;
+      font-size: 13px;
+      margin-right: 8px;
+      word-break: break-all;
+    }
+    .time {
+      flex: 1;
+      font-size: 10px;
+      color: #757575;
+    }
+    &.me {
+      background: #C5E1A5;
+    }
+  }
+
   .texting-bar {
     @include flex(row, flex-start, center);
+    background: #d7ccc8;
     position: absolute;
     width: 100%;
     bottom: 0;

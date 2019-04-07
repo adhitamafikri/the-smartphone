@@ -201,9 +201,22 @@
                                 <div class="contact-name">{{ currentConvo.contact.name }}</div>
                             </div>
                         </div>
-                        <h1>Convo</h1>
+                        <div class="wa-convo-row" v-for="convo in currentConvo.conversations"
+                            :class="{
+                                'me': convo.from == 'me',
+                                'theirs': convo.from != 'me'
+                            }">
+                            <div class="convo-bubble"
+                                :class="{ 'me': convo.from == 'me' }">
+                                <div class="message">{{ convo.message }}</div>
+                                <div class="time">{{ convo.time }}</div>
+                            </div>
+                        </div>
                         <div class="texting-bar">
-                            <input type="text" name="convo" id="convo_textfield" class="texting-field">
+                            <input type="text" name="convo" id="convo_textfield"
+                                class="texting-field"
+                                v-model="convoText"
+                                @keyup.enter="sendMessage()">
                             <div class="btn-voice theme-whatsapp round">
                                 <span class="fa fa-microphone"></span>
                             </div>

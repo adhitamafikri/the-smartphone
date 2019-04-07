@@ -1,8 +1,18 @@
+const contacts = [
+  { pp: 'https://image.ibb.co/k9PNyp/boy-1.jpg', name: 'Aditya Singh', phone: '080191283', status: 'Thank God' },
+  { pp: 'https://image.ibb.co/cGcWr9/rsz-girl-1.jpg', name: 'Caroline Hung', phone: '085234234', status: 'Young Hustler'},
+  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'My Crush', phone: '08xxxxxx', status: 'Striving for excellence'},
+  { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Terrell Owens', phone: '082131239', status: 'A guy with his wavey hair' },
+  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Tanaka', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
+  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Utaka', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
+  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Warren', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
+]
+
 const chats = [
   {
     pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg',
     name: 'Terrell Owens',
-    message: 'Hey i wanna talk about blockchain',
+    message: 'Up for the next challenges?',
     time: '16:08'
   },
   {
@@ -14,16 +24,32 @@ const chats = [
   {
     pp: 'https://image.ibb.co/cGcWr9/rsz-girl-1.jpg',
     name: 'Caroline Hung',
-    message: 'Have you done your work?',
+    message: 'I love your works!',
     time: '16:08'
   }
 ]
 
-const contacts = [
-  { pp: 'https://image.ibb.co/k9PNyp/boy-1.jpg', name: 'Aditya Singh', phone: '080191283', status: 'Thank God' },
-  { pp: 'https://image.ibb.co/cGcWr9/rsz-girl-1.jpg', name: 'Caroline Hung', phone: '085234234', status: 'Young Hustler'},
-  { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Terrell Owens', phone: '082131239', status: 'I\'m a bad guy' },
+let chats = [
+  {
+    contact: contacts[0],
+    conversations: [
+      { from: 'Aditya Singh', message: 'Hello', time: '16:02' },
+      { from: 'me', message: 'awkkwawk', time: '16:08' }
+    ]
+  },
+  {
+    contact: contacts[2],
+    conversations: [
+      { from: 'Aditya Singh', message: 'Hello' },
+      { from: 'me', message: 'awkkwawk' }
+    ]
+  },
 ]
+
+let currentConvo = {
+  contact: contacts[1],
+  conversations: []
+}
 
 const musics = [
   {
@@ -69,6 +95,7 @@ const vm = new Vue({
     isConvoOpen: false,
     isSearchbarOpen: false,
     contactSearchText: '',
+    currentConvo: currentConvo,
     //#endregion WhatsApp Variables
 
     //#region Music App Variables
@@ -113,6 +140,7 @@ const vm = new Vue({
       this.isSelectContactOpen = true
       this.isConvoOpen = false
       this.statusBarExpanded = false
+      this.contactSearchText = ''
     },
     openConvo(contact) {
       console.log(contact)
@@ -120,13 +148,15 @@ const vm = new Vue({
       this.isSelectContactOpen = false
       this.isConvoOpen = true
       this.statusBarExpanded = false
+
+      console.log('convo', convos.map(conv => conv.contact).indexOf(contact))
     },
     toggleSearchbar() {
       this.isSearchbarOpen = !this.isSearchbarOpen
+      setTimeout(() => {
+        this.$refs['searchbar_contact'].focus()
+      }, 200)
     },
-    // filteredContacts() {
-    //   return this.contacts
-    // },
     //#endregion WhatsApp Variables
 
     //#region Music App Methods

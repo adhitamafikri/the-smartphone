@@ -35,4 +35,17 @@ $app-bar-padding: $status-bar-h;
       margin: 0 1rem;
     }
   }
+
+  .contact-details {
+    @include flex(row, flex-start, center);
+    flex: 1;
+    .pp-holder {
+      width: 25px;
+      height: 25px;
+    }
+    .contact-name {
+      font-size: 14px;
+      margin: 0 0.5rem;
+    }
+  }
 }

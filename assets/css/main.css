@@ -496,7 +496,7 @@ body {
   margin: 0 8px;
 }
 .scene-page--whatsapp .wa-chat-card .right-part .bottom .message-text, .scene-page--whatsapp .wa-chat-card .right-part .bottom .contact-status, .scene-page--whatsapp .wa-contact-card .right-part .bottom .message-text, .scene-page--whatsapp .wa-contact-card .right-part .bottom .contact-status {
-  font-size: 12px;
+  font-size: 11px;
   text-overflow: ellipsis;
   margin: 8px 0;
 }
@@ -834,6 +834,22 @@ body {
 .app-bar .searchbar-layer input {
   flex: 1;
   margin: 0 1rem;
+}
+.app-bar .contact-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex: 1;
+}
+.app-bar .contact-details .pp-holder {
+  width: 25px;
+  height: 25px;
+}
+.app-bar .contact-details .contact-name {
+  font-size: 14px;
+  margin: 0 0.5rem;
 }
 
 .app-content {

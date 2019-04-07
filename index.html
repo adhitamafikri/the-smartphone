@@ -166,7 +166,7 @@
                                 <input type="text" name="contact" id="contact-textbox"
                                     placeholder="Search.."
                                     v-model="contactSearchText"
-                                    autofocus>
+                                    ref="searchbar_contact">
                             </div>
                         </div>
                         <div class="wa-contact-card" v-for="contact in filteredContacts"
@@ -185,6 +185,17 @@
                         </div>
                     </div>
                     <div class="app-content convo" v-show="isConvoOpen">
+                        <div class="app-bar theme-whatsapp">
+                            <div class="btn-back" @click="openChatList()">
+                                <span class="fa fa-arrow-left"></span>
+                            </div>
+                            <div class="contact-details">
+                                <div class="pp-holder round">
+                                    <img :src="currentConvo.contact.pp" :alt="currentConvo.contact.name" class="round">
+                                </div>
+                                <div class="contact-name">{{ currentConvo.contact.name }}</div>
+                            </div>
+                        </div>
                         <h1>Convo</h1>
                     </div>
                     <div class="floating-btn theme-whatsapp" v-show="isChatListOpen"

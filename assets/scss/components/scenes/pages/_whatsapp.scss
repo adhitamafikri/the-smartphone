@@ -67,6 +67,7 @@
   .wa-convo-row {
     width: 100%;
     padding: 1rem 0 0.2rem 0;
+    &:nth-last-child(2) { margin-bottom: 50px; }
     &.me { @include flex(row, flex-end, center); }
     &.theirs { @include flex(row, flex-start, center); }
   }

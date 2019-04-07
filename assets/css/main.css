@@ -518,6 +518,9 @@ body {
   width: 100%;
   padding: 1rem 0 0.2rem 0;
 }
+.scene-page--whatsapp .wa-convo-row:nth-last-child(2) {
+  margin-bottom: 50px;
+}
 .scene-page--whatsapp .wa-convo-row.me {
   display: flex;
   flex-direction: row;

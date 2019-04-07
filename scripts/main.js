@@ -1,11 +1,12 @@
 const contacts = [
   { pp: 'https://image.ibb.co/k9PNyp/boy-1.jpg', name: 'Aditya Singh', phone: '080191283', status: 'Thank God' },
-  { pp: 'https://image.ibb.co/cGcWr9/rsz-girl-1.jpg', name: 'Caroline Hung', phone: '085234234', status: 'Young Hustler'},
-  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'My Crush', phone: '08xxxxxx', status: 'Striving for excellence'},
-  { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Terrell Owens', phone: '082131239', status: 'A guy with his wavey hair' },
-  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Tanaka', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
-  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Utaka', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
-  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Warren', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
+  { pp: 'https://image.ibb.co/cGcWr9/rsz-girl-1.jpg', name: 'Caroline Hung', phone: '085234234', status: 'Funky Panda'},
+  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Donald', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
+  { pp: 'https://i.ibb.co/BrFVqFy/Surf.jpg', name: 'Harry', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
+  { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Jarrell Owens', phone: '082131239', status: 'A guy with his wavey hair' },
+  { pp: 'https://i.ibb.co/Hqk8L5G/sunset.jpg', name: 'Kevin F', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
+  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'My Crush', phone: '08xxxxxx', status: 'Needs a warm hug'},
+  { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Wahyu', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
 ]
 
 let chatObject = {
@@ -31,12 +32,16 @@ let chats = [
     ]
   },
   {
-    contact: contacts[3],
+    contact: contacts[4],
     conversations: [
       { from: 'other', message: 'Yo, Fikri', time: '16:08' },
       { from: 'me', message: 'Ayy, boy what\'s poppin?', time: '16:08' }
     ]
   },
+]
+
+let crushReplies = [
+  'Hi! What\'s up? 😄'
 ]
 
 const musics = [
@@ -86,6 +91,8 @@ const vm = new Vue({
     isSelectContactOpen: false,
     isConvoOpen: false,
     isSearchbarOpen: false,
+    crushReplies: crushReplies,
+    crushRepliesCount: 0,
     //#endregion WhatsApp Variables
 
     //#region Music App Variables
@@ -176,13 +183,20 @@ const vm = new Vue({
       let newChatList = this.chats.filter(v => v !== this.currentConvo )
       newChatList.unshift(this.currentConvo)
       this.chats = [...newChatList]
-      // setTimeout(() => this.autoReply(), 1000)
+      
+      // play a rigged auto reply
+      if(this.currentConvo.contact.name == 'My Crush') {
+        console.log('yesyeyaeyawe')
+        this.autoReply(this.crushReplies[this.crushRepliesCount])
+      } else {
+        setTimeout(() => this.autoReply('This is a reply for you :)'), 1000);
+      }
     },
-    autoReply() {
+    autoReply(message) {
       let time = this.getCurrentTime()
       let messageObj = conversationsObject
       messageObj.from = 'other'
-      messageObj.message = 'love youu'
+      messageObj.message = message
       messageObj.time = time
       this.currentConvo.conversations.push({...messageObj})
     },
@@ -268,7 +282,7 @@ const vm = new Vue({
       console.log('Ready!', this.currentTime)
       setInterval(() => {
         this.currentTime = this.getCurrentTime()
-      }, 60000)
+      }, 1000)
     })
   }
 })

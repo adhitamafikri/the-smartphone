@@ -1,9 +1,20 @@
 .scene-page--whatsapp {
-  .wa-chat-card {
+  .pp-holder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 8px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .wa-chat-card, .wa-contact-card {
     @include flex(row, space-around);
     color: black;
     width: 100%;
-    height: 50px;
     margin-top: 2%;
     margin-bottom: 2%;
     padding: 8px 0;
@@ -18,18 +29,6 @@
       bottom: 0; right: 5%;
       width: 80%;
       height: 1px;
-    }
-    .pp-holder {
-      @extend %with-bg-img;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-left: 8px;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
     }
     .right-part {
       @include flex(column);
@@ -50,12 +49,13 @@
       }
       .bottom {
         margin: 0 8px;
-        .message-text {
+        .message-text, .contact-status {
           font-size: 12px;
           text-overflow: ellipsis;
-          height: 10px;
+          margin: 8px 0;
         }
       }
     }
   }
+
 }

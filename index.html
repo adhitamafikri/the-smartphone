@@ -160,7 +160,19 @@
                                 <div class="btn-options"><span class="fas fa-ellipsis-v"></span></div>
                             </div>
                         </div>
-                        <h1>Search Contact</h1>
+                        <div class="wa-contact-card" v-for="contact in contacts">
+                            <div class="pp-holder round">
+                                <img :src="contact.pp" :alt="contact.name" class="round">
+                            </div>
+                            <div class="right-part">
+                                <div class="top">
+                                    <div class="contact-name text-bold">{{ contact.name }}</div>
+                                </div>
+                                <div class="bottom">
+                                    <p class="contact-status">{{ contact.status }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="app-content convo" v-show="isConvoOpen">
                         <h1>Convo</h1>

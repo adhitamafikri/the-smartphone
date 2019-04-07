@@ -20,9 +20,9 @@ const chats = [
 ]
 
 const contacts = [
-  { name: 'Terrell Owens', phone: '08213123' },
-  { name: 'Jacqui Martin', phone: '080191283' },
-  { name: 'Caroline Hung', phone: '085234234' },
+  { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Terrell Owens', phone: '082131239', status: 'I\'m a bad guy' },
+  { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Jacqui Martin', phone: '080191283', status: 'Thank God' },
+  { pp: 'https://image.ibb.co/ktaZB9/boy-2.jpg', name: 'Caroline Hung', phone: '085234234', status: 'Young Hustler'},
 ]
 
 const musics = [

@@ -97,9 +97,10 @@
   .texting-bar {
     @include flex(row, flex-start, center);
     background: #d7ccc8;
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
+    margin-bottom: $navigation-bar-h;
   }
 
   .texting-field {

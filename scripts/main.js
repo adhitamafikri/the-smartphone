@@ -25,15 +25,15 @@ let chats = [
   {
     contact: contacts[0],
     conversations: [
-      { from: 'sender', message: 'Hello', time: '16:02' },
+      { from: 'other', message: 'Hello', time: '16:02' },
       { from: 'me', message: 'Hello, Singh! What\'s up?', time: '16:08' },
-      { from: 'sender', message: 'hey i like your works!', time: '16:08' }
+      { from: 'other', message: 'hey i like your works!', time: '16:08' }
     ]
   },
   {
     contact: contacts[3],
     conversations: [
-      { from: 'sender', message: 'Yo, Fikri', time: '16:08' },
+      { from: 'other', message: 'Yo, Fikri', time: '16:08' },
       { from: 'me', message: 'Ayy, boy what\'s poppin?', time: '16:08' }
     ]
   },
@@ -147,17 +147,14 @@ const vm = new Vue({
       this.isConvoOpen = true
       this.statusBarExpanded = false
       this.activeApp = 'convo'
-      let chatID = chats.map(chat => chat.contact).indexOf(contact)
-      if(chatID > -1) {
-        this.currentConvo = chats[chatID]
-        console.log('found')
-      } else {
+      let chatID = this.chats.map(chat => chat.contact).indexOf(contact)
+      if(chatID > -1) this.currentConvo = this.chats[chatID]
+      else {
         let newChat = chatObject
         newChat.contact = contact
         newChat.conversations.push(conversationsObject)
-        this.currentConvo = newChat
-        this.chats.unshift(newChat)
-        console.log(this.chats)
+        this.currentConvo = {...newChat}
+        this.chats.unshift({...newChat})
       }
     },
     sendMessage() {
@@ -167,7 +164,16 @@ const vm = new Vue({
       messageObj.message = this.convoText
       messageObj.time = time
       this.convoText = ''
-      this.currentConvo.conversations.push(messageObj)
+      this.currentConvo.conversations.push({...messageObj})
+      setTimeout(() => this.autoReply(), 1000)
+    },
+    autoReply() {
+      let time = this.getCurrentTime()
+      let messageObj = conversationsObject
+      messageObj.from = 'other'
+      messageObj.message = 'love youu'
+      messageObj.time = time
+      this.currentConvo.conversations.push({...messageObj})
     },
     toggleSearchbar() {
       this.isSearchbarOpen = !this.isSearchbarOpen
@@ -249,6 +255,9 @@ const vm = new Vue({
   mounted() {
     this.$nextTick(function() {
       console.log('Ready!', this.currentTime)
+      setInterval(() => {
+        this.currentTime = this.getCurrentTime()
+      }, 60000)
     })
   }
 })

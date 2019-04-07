@@ -66,13 +66,6 @@ const musics = [
   }
 ]
 
-function getCurrentTime() {
-  let dt = new Date()
-  let hour = dt.getHours()
-  let mins = dt.getMinutes() < 10 ? `0${dt.getMinutes()}` : dt.getMinutes()
-  return `${hour}:${mins}`
-}
-
 const vm = new Vue({
   el: '#frame',
   data: {
@@ -80,7 +73,7 @@ const vm = new Vue({
     statusBarExpanded: false,
     taps: 0,
     activeApp: '',
-    currentTime: getCurrentTime(),
+    currentTime: '',
 
     //#region WhatsApp Variables
     chats: chats,
@@ -108,6 +101,13 @@ const vm = new Vue({
     //#endregion Music App Variables
   },
   methods: {
+    getCurrentTime() {
+      let dt = new Date()
+      let hour = dt.getHours()
+      let mins = dt.getMinutes() < 10 ? `0${dt.getMinutes()}` : dt.getMinutes()
+      return `${hour}:${mins}`
+    },
+
     doubleTap() {
       this.taps++
       console.log(this.taps)
@@ -161,13 +161,11 @@ const vm = new Vue({
       }
     },
     sendMessage() {
-      let dt = new Date()
-      let hour = dt.getHours()
-      let mins = dt.getMinutes() < 10 ? `0${dt.getMinutes()}` : dt.getMinutes()
+      let time = this.getCurrentTime()
       let messageObj = conversationsObject
       messageObj.from = 'me'
       messageObj.message = this.convoText
-      messageObj.time = `${hour}:${mins}`
+      messageObj.time = time
       this.convoText = ''
       this.currentConvo.conversations.push(messageObj)
     },
@@ -244,6 +242,9 @@ const vm = new Vue({
     filteredContacts() {
       return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.contactSearchText.toLowerCase()))
     }
+  },
+  beforeMount() {
+    this.currentTime = this.getCurrentTime()
   },
   mounted() {
     this.$nextTick(function() {

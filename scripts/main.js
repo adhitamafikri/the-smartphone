@@ -8,6 +8,17 @@ const contacts = [
   { pp: 'https://i.ibb.co/CHxxP6G/pp-placeholder.png', name: 'Warren', phone: '08xxxxxx', status: 'Hey, I am using WhatsApp'},
 ]
 
+let chatObject = {
+  contact: {},
+  conversations: []
+}
+
+let conversationsObject = {
+  from: '',
+  message: '',
+  time: ''
+}
+
 let chats = [
   {
     contact: contacts[0],
@@ -123,7 +134,6 @@ const vm = new Vue({
       this.contactSearchText = ''
     },
     openConvo(contact) {
-      console.log(contact)
       this.isChatListOpen = false
       this.isSelectContactOpen = false
       this.isConvoOpen = true
@@ -134,7 +144,11 @@ const vm = new Vue({
         this.currentConvo = chats[chatID]
         console.log('found')
       } else {
-        console.log('not found')
+        let newChat = chatObject
+        newChat.contact = contact
+        newChat.conversations.push(conversationsObject)
+        console.log(newChat)
+        this.currentConvo = newChat
       }
     },
     toggleSearchbar() {

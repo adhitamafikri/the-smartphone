@@ -135,7 +135,7 @@ const vm = new Vue({
       this.isSelectContactOpen = false
       this.isConvoOpen = true
       this.statusBarExpanded = false
-
+      this.activeApp = 'convo'
       let chatID = chats.map(chat => chat.contact).indexOf(contact)
       if(chatID > -1) {
         this.currentConvo = chats[chatID]
@@ -145,7 +145,8 @@ const vm = new Vue({
         newChat.contact = contact
         newChat.conversations.push(conversationsObject)
         this.currentConvo = newChat
-        this.chats.unshift(this.currentConvo)
+        this.chats.unshift(newChat)
+        console.log(this.chats)
       }
     },
     toggleSearchbar() {

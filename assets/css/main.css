@@ -352,6 +352,12 @@ body {
 .navigation-bar.whatsapp, .navigation-bar.music {
   background: #F5F5F5;
 }
+.navigation-bar.convo {
+  background: #d7ccc8;
+}
+.navigation-bar.convo .line-btn {
+  background: #616161;
+}
 
 .scene {
   width: 280px;
@@ -430,6 +436,9 @@ body {
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
 }
 
+.scene-page--whatsapp .app-content.convo {
+  background: #d7ccc8;
+}
 .scene-page--whatsapp .pp-holder {
   width: 40px;
   height: 40px;
@@ -499,6 +508,35 @@ body {
   font-size: 11px;
   text-overflow: ellipsis;
   margin: 8px 0;
+}
+.scene-page--whatsapp .texting-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.scene-page--whatsapp .texting-field {
+  flex: 1;
+  height: 25px;
+  padding: 0 1rem;
+  margin: 0 4px 0 1rem;
+  border-radius: 20px;
+}
+.scene-page--whatsapp .btn-voice {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  margin: 0 1rem 0 4px;
+  cursor: pointer;
 }
 
 .scene-page--musics .app-content {

@@ -26,4 +26,10 @@ $navigation-bar-h: 24px;
   &.whatsapp, &.music {
     background: #F5F5F5;
   }
+  &.convo {
+    background: #d7ccc8;
+    .line-btn {
+      background: #616161;
+    }
+  }
 }

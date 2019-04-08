@@ -1,9 +1,9 @@
 $phone-w: 280px;
 $phone-h: 550px;
 $phone-color: linear-gradient(#EEEEEE 50%, #E0E0E0);
+$phone-color-dark: #212121;
 $bone-radius: 25px;
 .phone {
-  background: $phone-color;
   width: $phone-w;
   height: $phone-h;
   border-radius: $bone-radius;
@@ -17,10 +17,10 @@ $bone-radius: 25px;
 
 $bone-w: 15px;
 .back-part {
-  background: $phone-color;
   width: $phone-w;
   height: $phone-h;
   position: absolute;
+  transition: all 0.5s ease-out;
   transform-origin: left;
   transform:
     translate3d(100%, 0, -$bone-w)
@@ -35,9 +35,13 @@ $bone-w: 15px;
   }
 }
 
+.phone.white {
+  background: $phone-color;
+  .back-part { background: $phone-color; }
+}
 .phone.black {
-  background: black;
-  .back-part { background: black; }
+  background: $phone-color-dark;
+  .back-part { background: $phone-color-dark; }
 }
 
 // ## Phone Core Components
@@ -49,7 +53,6 @@ $screen-h: $phone-h * 0.92;
   width: $screen-w;
   height: $screen-h;
   background: linear-gradient(#212121 45%, black 80%);
-  // z-index: 0;
 }
 
 .in-screen-fingerprint {
@@ -85,7 +88,6 @@ $screen-h: $phone-h * 0.92;
 $proximity-w: 20px;
 $proximity-h: 8px;
 .proximity-sensor {
-  // background: linear-gradient(black, white);
   width: $proximity-w;
   height: $proximity-h;
   border-radius: 15px;

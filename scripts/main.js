@@ -90,7 +90,7 @@ const vm = new Vue({
     activeApp: '',
     currentTime: '',
     isPhoneRotated: false,
-    phoneColor: 'black',
+    phoneColor: 'white',
 
     //#region WhatsApp Variables
     chats: chats,
@@ -139,6 +139,9 @@ const vm = new Vue({
         }
         this.taps = 0
       }, 400)
+    },
+    changePhoneColor(color) {
+      this.phoneColor = color
     },
 
     //#region WhatsApp Methods

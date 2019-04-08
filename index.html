@@ -13,6 +13,10 @@
 
 <body>
     <div class="frame" id="frame">
+        <div class="phone-color-changer">
+            <button @click="changePhoneColor('white')">White</button>
+            <button @click="changePhoneColor('black')">Black</button>
+        </div>
         <div class="phone-rotator" @click="rotatePhone()"></div>
         <div class="phone"
             :class="[

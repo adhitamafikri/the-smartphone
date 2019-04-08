@@ -13,7 +13,8 @@
 
 <body>
     <div class="frame" id="frame">
-        <div class="phone">
+        <div class="phone-rotator" @click="rotatePhone()"></div>
+        <div class="phone" :class="{'is-rotated': isPhoneRotated}">
             <div class="front-speaker front-speaker--top"></div>
             <div class="front-speaker front-speaker--bottom"></div>
 
@@ -28,6 +29,7 @@
                     <div class="lens lens--tele"></div>
                     <div class="flash"></div>
                 </div>
+                <div class="phone-rotator phone-rotator--back" @click="rotatePhone()"></div>
             </div>
 
             <div class="screen"></div>

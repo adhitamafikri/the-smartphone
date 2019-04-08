@@ -1,0 +1,11 @@
+.phone-rotator {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  z-index: 1;
+  cursor: pointer;
+  &--back {
+    width: 100%;
+    height: 100%;
+  }
+}

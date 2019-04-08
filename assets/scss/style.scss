@@ -18,6 +18,7 @@ body {
 }
 
 .frame {
+  position: relative;
   // &:hover > .phone {
   //   transform: rotate3d(1, -2, 0, 180deg);
   // }
@@ -46,6 +47,9 @@ body {
 @import "./components/app-bar";
 // ## App Content
 @import "./components/app-content";
+
+// ## Rotator
+@import "./components/phone-rotator";
 
 // ## Widgets
 @import "./components/widgets/digi-clock";

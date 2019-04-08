@@ -89,6 +89,7 @@ const vm = new Vue({
     taps: 0,
     activeApp: '',
     currentTime: '',
+    isPhoneRotated: false,
 
     //#region WhatsApp Variables
     chats: chats,
@@ -125,7 +126,9 @@ const vm = new Vue({
       let mins = dt.getMinutes() < 10 ? `0${dt.getMinutes()}` : dt.getMinutes()
       return `${hour}:${mins}`
     },
-
+    rotatePhone() {
+      this.isPhoneRotated = !this.isPhoneRotated
+    },
     doubleTap() {
       this.taps++
       console.log(this.taps)

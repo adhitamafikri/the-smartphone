@@ -55,6 +55,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.frame {
+  position: relative;
+}
+
 .theme-whatsapp {
   background: #00897B;
   color: white;
@@ -75,6 +79,9 @@ body {
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.08);
   transition: all 1s ease-out;
   transform-style: preserve-3d;
+}
+.phone.is-rotated {
+  transform: rotate3d(1, -1, 0, 180deg);
 }
 
 .back-part {
@@ -954,6 +961,18 @@ body {
   margin-top: 65px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.phone-rotator {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  z-index: 1;
+  cursor: pointer;
+}
+.phone-rotator--back {
+  width: 100%;
+  height: 100%;
 }
 
 .digi-widget {

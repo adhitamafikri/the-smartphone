@@ -52,8 +52,7 @@ let herReplies = [
   'I do really like you too, from the first time we met 😊.',
   'and i really want to get closer to you',
   'for sure...',
-  '7PM ?',
-  'see you there 😄'
+  'aight, see you there 😄'
 ]
 
 const musics = [
@@ -198,10 +197,10 @@ const vm = new Vue({
       
       // play a rigged auto reply
       if(this.currentConvo.contact.name == 'Her') {
-        console.log(this.herRepliesCount, this.yourFlirtCount)
-        this.autoReply(this.herReplies[this.herRepliesCount])
+        this.herAutoReply()
+        this.yourFlirtCount++;
       } else if(this.currentConvo.contact.name == 'Harry') {
-        if(this.convoText == 'shite lah') setTimeout(() => this.autoReply('dih ngegad'), 1000);
+        if(this.convoText == 'bgsd la') setTimeout(() => this.autoReply('dih ngegad'), 1000);
         else setTimeout(() => this.autoReply(`lah, coba sendiri lah. W mana pernah sepik-sepik awkawk :')`), 1000);
       } else {
         setTimeout(() => this.autoReply('Not now, Fik. I am busy right now.'), 1000);
@@ -215,6 +214,11 @@ const vm = new Vue({
       messageObj.message = message
       messageObj.time = time
       this.currentConvo.conversations.push({...messageObj})
+    },
+    herAutoReply() {
+      let flirtCount = this.yourFlirtCount
+      if(flirtCount == 0) this.autoReply(this.herReplies[0])
+      else if(flirtCount == 3) this.autoReply(this.herReplies[1])
     },
     toggleSearchbar() {
       this.isSearchbarOpen = !this.isSearchbarOpen

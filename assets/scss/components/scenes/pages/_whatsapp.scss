@@ -66,7 +66,7 @@
 
   .wa-convo-row {
     width: 100%;
-    padding: 1rem 0 0.2rem 0;
+    padding: 0.65rem 0 0 0;
     &:nth-last-child(2) { margin-bottom: 50px; }
     &.me { @include flex(row, flex-end, center); }
     &.theirs { @include flex(row, flex-start, center); }
@@ -75,13 +75,14 @@
   .convo-bubble {
     @include flex(row, flex-start, flex-end);
     background: white;
+    max-width: 75%;
     color: black;
     border-radius: 4px;
     padding: 4px 8px;
     margin: 0 1rem;
     .message {
       flex: 6;
-      font-size: 13px;
+      font-size: 12px;
       margin-right: 8px;
       word-wrap: break-word;
     }

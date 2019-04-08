@@ -24,18 +24,17 @@ let currentConvo = chatObject
 
 let chats = [
   {
+    contact: contacts[4],
+    conversations: [
+      { from: 'other', message: 'Yo, Fikri', time: '16:08' }
+    ]
+  },
+  {
     contact: contacts[0],
     conversations: [
       { from: 'other', message: 'Hello', time: '16:02' },
       { from: 'me', message: 'Hello, Singh! What\'s up?', time: '16:08' },
       { from: 'other', message: 'hey i like your works!', time: '16:08' }
-    ]
-  },
-  {
-    contact: contacts[4],
-    conversations: [
-      { from: 'other', message: 'Yo, Fikri', time: '16:08' },
-      { from: 'me', message: 'Ayy, boy what\'s poppin?', time: '16:08' }
     ]
   },
   {
@@ -49,7 +48,7 @@ let chats = [
 let herReplies = [
   'Hi, Fik! What\'s up? 😄',
   'Honestly...',
-  'I do really like you too, from the first time we met 😊.',
+  'I do really like you too, from the first time we met 😅.',
   'and i really want to get closer to you',
   'for sure...',
   'aight, see you there 😄'
@@ -194,31 +193,43 @@ const vm = new Vue({
       let newChatList = this.chats.filter(v => v !== this.currentConvo )
       newChatList.unshift(this.currentConvo)
       this.chats = [...newChatList]
+      this.autoScrollConvo()
       
       // play a rigged auto reply
       if(this.currentConvo.contact.name == 'Her') {
         this.herAutoReply()
         this.yourFlirtCount++;
       } else if(this.currentConvo.contact.name == 'Harry') {
-        if(this.convoText == 'bgsd la') setTimeout(() => this.autoReply('dih ngegad'), 1000);
-        else setTimeout(() => this.autoReply(`lah, coba sendiri lah. W mana pernah sepik-sepik awkawk :')`), 1000);
-      } else {
-        setTimeout(() => this.autoReply('Not now, Fik. I am busy right now.'), 1000);
-      }
+        if(this.convoText == 'bgsd la') this.autoReply('dih ngegad');
+        else this.autoReply(`lah, coba sendiri lah. W mana pernah sepik-sepik awkawk :')`)
+      } else this.autoReply('Not now, Fik. I am so busy right now.')
       this.convoText = ''
     },
-    autoReply(message) {
+    async waitReply(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms))
+    },
+    async autoReply(message, delay = 1000) {
       let time = this.getCurrentTime()
       let messageObj = conversationsObject
       messageObj.from = 'other'
       messageObj.message = message
       messageObj.time = time
+      await this.waitReply(delay)
       this.currentConvo.conversations.push({...messageObj})
+      this.autoScrollConvo()
     },
-    herAutoReply() {
+    async herAutoReply() {
       let flirtCount = this.yourFlirtCount
       if(flirtCount == 0) this.autoReply(this.herReplies[0])
-      else if(flirtCount == 3) this.autoReply(this.herReplies[1])
+      else if(flirtCount == 3) {
+        await this.autoReply(this.herReplies[1])
+        await this.autoReply(this.herReplies[2], 2000)
+        await this.autoReply(this.herReplies[3], 3000)
+      }
+      else if(flirtCount == 5) await this.autoReply(this.herReplies[4], 2000)
+    },
+    autoScrollConvo() {
+      setTimeout(() => this.$refs['convo_content'].scrollTop = this.$refs['convo_content'].scrollHeight , 200)
     },
     toggleSearchbar() {
       this.isSearchbarOpen = !this.isSearchbarOpen

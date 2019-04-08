@@ -516,7 +516,7 @@ body {
 }
 .scene-page--whatsapp .wa-convo-row {
   width: 100%;
-  padding: 1rem 0 0.2rem 0;
+  padding: 0.65rem 0 0 0;
 }
 .scene-page--whatsapp .wa-convo-row:nth-last-child(2) {
   margin-bottom: 50px;
@@ -542,6 +542,7 @@ body {
   align-items: flex-end;
   flex-wrap: nowrap;
   background: white;
+  max-width: 75%;
   color: black;
   border-radius: 4px;
   padding: 4px 8px;
@@ -549,7 +550,7 @@ body {
 }
 .scene-page--whatsapp .convo-bubble .message {
   flex: 6;
-  font-size: 13px;
+  font-size: 12px;
   margin-right: 8px;
   word-wrap: break-word;
 }

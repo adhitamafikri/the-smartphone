@@ -35,6 +35,11 @@ $bone-w: 15px;
   }
 }
 
+.phone.black {
+  background: black;
+  .back-part { background: black; }
+}
+
 // ## Phone Core Components
 $screen-w: $phone-w;
 $screen-h: $phone-h * 0.92;

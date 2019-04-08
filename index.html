@@ -14,7 +14,10 @@
 <body>
     <div class="frame" id="frame">
         <div class="phone-rotator" @click="rotatePhone()"></div>
-        <div class="phone" :class="{'is-rotated': isPhoneRotated}">
+        <div class="phone"
+            :class="[
+                phoneColor,
+                {'is-rotated': isPhoneRotated}]">
             <div class="front-speaker front-speaker--top"></div>
             <div class="front-speaker front-speaker--bottom"></div>
 
@@ -118,7 +121,7 @@
                             <div class="app-name">Music</div>
                         </div>
                         <div class="app-item">
-                            <div class="app-icon app-icon--images">
+                            <div class="app-icon app-icon--images theme-gallery">
                                 <span class="fa fa-images"></span>
                             </div>
                             <div class="app-name">Gallery</div>

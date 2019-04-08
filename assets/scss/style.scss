@@ -6,7 +6,7 @@
 
 * { user-select: none; }
 
-$body-gradient: linear-gradient(#AD1457, #880E4F);
+$body-gradient: linear-gradient(#AD1457 25%, #880E4F 70%);
 body {
   @include flex(row, center, center);
   margin: 0;
@@ -19,9 +19,6 @@ body {
 
 .frame {
   position: relative;
-  // &:hover > .phone {
-  //   transform: rotate3d(1, -2, 0, 180deg);
-  // }
 }
 
 // ## Themes

@@ -84,12 +84,13 @@ const musics = [
 const vm = new Vue({
   el: '#frame',
   data: {
-    authorized: true,
+    authorized: false,
     statusBarExpanded: false,
     taps: 0,
     activeApp: '',
     currentTime: '',
     isPhoneRotated: false,
+    phoneColor: 'black',
 
     //#region WhatsApp Variables
     chats: chats,

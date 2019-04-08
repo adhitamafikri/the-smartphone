@@ -50,7 +50,7 @@ body {
   flex-wrap: nowrap;
   margin: 0;
   padding: 0;
-  background: linear-gradient(#AD1457, #880E4F);
+  background: linear-gradient(#AD1457 25%, #880E4F 70%);
   height: 100vh;
   font-family: "Roboto", sans-serif;
 }
@@ -67,6 +67,11 @@ body {
 .theme-music {
   background: #F5F5F5;
   color: #7E57C2;
+}
+
+.theme-gallery {
+  background: #FF8F00;
+  color: white;
 }
 
 .phone {
@@ -140,6 +145,13 @@ body {
 }
 .back-part--bone-15 {
   transform: translate3d(100%, 0, 0px) rotatey(180deg);
+}
+
+.phone.black {
+  background: black;
+}
+.phone.black .back-part {
+  background: black;
 }
 
 .screen {
@@ -396,7 +408,7 @@ body {
 }
 
 .scene-page--home {
-  background-image: linear-gradient(#AD1457, #880E4F), url("https://i.ibb.co/KqDXCCr/material-android.jpg");
+  background-image: linear-gradient(#AD1457 25%, #880E4F 70%), url("https://i.ibb.co/KqDXCCr/material-android.jpg");
 }
 .scene-page--home .app-row {
   display: flex;
@@ -434,9 +446,6 @@ body {
 }
 .scene-page--home .app-icon--whatsapp {
   font-size: 1.5rem;
-}
-.scene-page--home .app-icon--images {
-  background: #EF6C00;
 }
 .scene-page--home .app-name {
   font-size: 0.7rem;

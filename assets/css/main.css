@@ -553,6 +553,7 @@ body {
   font-size: 12px;
   margin-right: 8px;
   word-wrap: break-word;
+  line-height: 1.47;
 }
 .scene-page--whatsapp .convo-bubble .time {
   flex: 1;

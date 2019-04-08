@@ -50,11 +50,17 @@ let herReplies = [
   'Honestly...',
   'I do really like you too, from the first time we met 😅.',
   'and i really want to get closer to you',
-  'for sure...',
+  'sure thing.. 😊',
   'aight, see you there 😄'
 ]
 
 const musics = [
+  {
+    cover: 'https://i.ibb.co/fYrCzmF/Masego.jpg',
+    title: 'Late Night',
+    artist: 'Masego',
+    duration: '2:48'
+  },
   {
     cover: 'https://i.ibb.co/tcWVbVP/Jorja-Smith.jpg',
     title: 'Lost and Found',
@@ -72,12 +78,6 @@ const musics = [
     title: 'Nonchalant',
     artist: '6lack',
     duration: '3:08'
-  },
-  {
-    cover: 'https://i.ibb.co/fYrCzmF/Masego.jpg',
-    title: 'Late Night',
-    artist: 'Masego',
-    duration: '2:48'
   }
 ]
 
@@ -226,16 +226,15 @@ const vm = new Vue({
         await this.autoReply(this.herReplies[2], 2000)
         await this.autoReply(this.herReplies[3], 3000)
       }
-      else if(flirtCount == 5) await this.autoReply(this.herReplies[4], 2000)
+      else if(flirtCount == 5) await this.autoReply(this.herReplies[4], 1500)
+      else if(flirtCount == 6) await this.autoReply(this.herReplies[5], 2000)
     },
     autoScrollConvo() {
       setTimeout(() => this.$refs['convo_content'].scrollTop = this.$refs['convo_content'].scrollHeight , 200)
     },
     toggleSearchbar() {
       this.isSearchbarOpen = !this.isSearchbarOpen
-      setTimeout(() => {
-        this.$refs['searchbar_contact'].focus()
-      }, 200)
+      setTimeout(() => this.$refs['searchbar_contact'].focus(), 200)
     },
     //#endregion WhatsApp Variables
 

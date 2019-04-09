@@ -603,6 +603,7 @@ body {
   padding: 0 1rem;
   margin: 0 4px 0 1rem;
   border-radius: 20px;
+  outline: none;
 }
 .scene-page--whatsapp .btn-voice {
   display: flex;
@@ -997,7 +998,7 @@ body {
   align-items: flex-start;
   flex-wrap: nowrap;
   position: absolute;
-  top: -5%;
+  top: -6%;
 }
 .phone-color-changer button {
   font-size: 10px;

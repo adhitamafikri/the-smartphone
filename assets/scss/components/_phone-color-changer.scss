@@ -1,6 +1,6 @@
 .phone-color-changer {
   @include flex(row, space-between);
   position: absolute;
-  top: -5%;
+  top: -6%;
   button { font-size: 10px; }
 }

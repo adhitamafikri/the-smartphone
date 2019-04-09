@@ -588,7 +588,7 @@ body {
 .scene-page--whatsapp .texting-bar {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
   background: #d7ccc8;
@@ -598,7 +598,7 @@ body {
   margin-bottom: 24px;
 }
 .scene-page--whatsapp .texting-field {
-  flex: 1;
+  width: 170px;
   height: 25px;
   padding: 0 1rem;
   margin: 0 4px 0 1rem;

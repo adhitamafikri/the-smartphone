@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node-sass ./assets/scss/style.scss ./assets/css/main.css",
-    "watch": "node-sass --watch ./assets/scss/style.scss ./assets/css/main.css",
-    "build": "node-sass ./assets/scss/style.scss ./assets/css/main.css --style compressed"
+    "dev": "node-sass ./assets/scss/style.scss ./public/main.css",
+    "watch": "node-sass --watch ./assets/scss/style.scss ./public/main.css",
+    "build": "node-sass ./assets/scss/style.scss ./public/main.css --style compressed"
   },
   "keywords": [],
   "author": "",

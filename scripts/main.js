@@ -205,7 +205,7 @@ const vm = new Vue({
       // play a rigged auto reply
       if(this.currentConvo.contact.name == 'Her') {
         this.herAutoReply()
-        this.yourFlirtCount++;
+        this.yourFlirtCount++
       } else if(this.currentConvo.contact.name == 'Harry') {
         if(this.convoText == 'bgsd la') this.autoReply('dih ngegad');
         else this.autoReply(`lah, coba sendiri lah. W mana pernah sepik-sepik awkawk :')`)

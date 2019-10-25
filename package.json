@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "sass ./assets/scss/style.scss ./assets/css/main.css",
-    "watch": "sass --watch ./assets/scss/style.scss ./assets/css/main.css"
+    "watch": "sass --watch ./assets/scss/style.scss ./assets/css/main.css",
+    "build": "sass ./assets/scss/style.scss ./assets/css/main.css --style compressed"
   },
   "keywords": [],
   "author": "",
